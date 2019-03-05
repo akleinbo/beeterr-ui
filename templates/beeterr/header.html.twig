@@ -1,0 +1,38 @@
+<header class="site-header">
+    <a href="#content" class="sr-only sr-only-focusable">Skip to content</a>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
+
+            <a class="navbar-brand text-dark" href="{{ path('default') }}">
+                {#<img src="{{ asset('templates/beeterr/img/logo-boost.svg') }}" alt="Boost Theme">#}
+                <span class="text-primary">Beeterr</span> PuntNL
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
+
+                    {% for page in page.menus.top %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('default', {'slug':page.slug}) }}">{{ page.title }}</a>
+                        </li>
+                    {% endfor %}
+
+                    {#<li class="nav-item dropdown">#}
+                        {#<a class="nav-link dropdown-toggle" href="#" id="DropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages<i class="fas fa-angle-down fa-sm ml-1"></i></a>#}
+                        {#<div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu">#}
+                            {#<a class="dropdown-item" href="landing.html">Landing</a>#}
+                            {#<a class="dropdown-item" href="inner.html">Inner</a>#}
+                        {#</div>#}
+                    {#</li>#}
+
+                    {#<li class="nav-item">#}
+                        {#<a class="nav-link" href="docs.html">Docs</a>#}
+                    {#</li>#}
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+</header>

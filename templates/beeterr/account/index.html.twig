@@ -1,0 +1,20 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.metaTitle|default }}{% endblock %}
+
+{% block metaDescription %}{{ page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <!-- body -->
+    {% include site.template~'/account/body.html.twig' %}
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.metaTitle|default }}{% endblock %}
+
+{% block metaDescription %}{{ page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <div class="container body-container">
+        <div class="row">
+            <div class="col-12 col-md-12 mb-3">
+                <h2>{{ 'Oeps'|trans }}</h2>
+                <p>{{ 'Dit email address is reeds bij ons bekend. Wachtwoord vergeten? Klik op onderstaande link om jouw wachtwoord te resetten of probeer het opnieuw met een ander email adres.'|trans }}</p>
+                <p><a href="{{ path('register') }}"> <span class="fa fa-arrow-circle-left"></span> Terug</a></p>
+                <p><a href="#"> <span class="fa fa-arrow-circle-left"></span> Wachtwoord resetten</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ 'Mijn gegevens'|trans }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <!-- body -->
+    <div class="container body-container" id="form_search_results_2">
+        <div class="row">
+            <div class="d-12 col-md-3 mb-3">
+                {% include site.template~'/account/menu.html.twig' %}
+            </div>
+            <div class="col-12 col-md-9 mb-3">
+
+                <h1>{{ 'Mijn adressen'|trans }}</h1>
+                <p><a href="{{ path('account_shipping_addresses_edit') }}" class="btn btn-primary">{{ 'Toevoegen'|trans }}</a></p>
+
+                {% if shippingAddresses is empty %}
+
+                    <p>{{ 'Er zijn geen addressen gevonden.'|trans }}</p>
+
+                {% endif %}
+
+                {% for shippingAddress in shippingAddresses %}
+                    <div class="row">
+                        <div class="col-3"><a href="{{ path('account_shipping_addresses_edit', {'id':shippingAddress.id}) }}">{{ shippingAddress.street|default }}, {{ shippingAddress.houseNumber|default }}</a></div>
+                        <div class="col-2">{{ shippingAddress.postcode|default }}</div>
+                        <div class="col-3">{{ shippingAddress.city|default }}</div>
+                        <div class="col-3">{{ shippingAddress.country|default }}</div>
+                        <div class="col-1"><a href="#"><span class="fa fa-trash"></span></a></div>
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+    <div class="" id="form_search_results_1"></div>
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}

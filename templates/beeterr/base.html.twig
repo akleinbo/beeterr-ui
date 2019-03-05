@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="{{ app.request.locale|default }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="{% block metaDescription %}{% endblock %}">
+    <meta name="keywords" content="{% block metaKeywords %}{% endblock %}">
+    <meta name="author" content="{% block metaAuthor %}{% endblock %}">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700">
+        <link rel="stylesheet" href="{{ asset('templates/beeterr/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('templates/beeterr/css/theme.min.css') }}">
+    {% endblock %}
+
+    {% block headerJavascripts %}{% endblock %}
+
+    {% block headerAnalyticsCode %}
+        {{ site.analyticsCode|raw }}
+    {% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+
+{% block body %}{% endblock %}
+
+{% block javascriptFooter %}
+    {{ encore_entry_script_tags('app') }}
+    <script src="{{ asset('templates/beeterr/js/jquery.slim.min.js') }}"></script>
+    <script src="{{ asset('templates/beeterr/js/popper.min.js') }}"></script>
+    <script src="{{ asset('templates/beeterr/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+
+</body>
