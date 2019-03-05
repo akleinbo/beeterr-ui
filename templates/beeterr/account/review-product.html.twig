@@ -1,0 +1,61 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ 'Schrijf een beoordeling'|trans }}{% endblock %}
+{% block metaDescription %}{{ 'Schrijf een beoordeling over een van onze producten en help andere klanten bij hun keuze. ' }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <div class="container body-container" id="form_search_results_2">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h2>{{ 'Schrijf een beoordeling'|trans }}</h2>
+                <p class="text-muted">Dank voor het schrijven van een beoordeling. Hiermee helpt u andere klanten een betere keuze te maken. Let op, als u opmerkingen heeft over de levering of levertijden dan kunnen we u beter van dienst zijn bij onze klantenservice.</p>
+                <p class="text-muted font-italic">Alle beoordelingen worden eerst beoordeeld voordat deze worden weergegeven op deze website. </p>
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <p><img src="{{ product.images|first }}" alt="{{ product.title }}" class="img-thumbnail img-fluid"></p>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <p><a href="{{ path('default', {'slug':product.slug}) }}">{{ product.title }}</a></p>
+                    </div>
+                </div>
+                <h2>{{ 'Jouw beoordeling'|trans }}</h2>
+
+                <!-- templates -->
+                <!-- bootstrap_4_layout -->
+                <!-- bootstrap_4_horizontal_layout.html.twig -->
+
+                {% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+
+                {{ form_errors(form) }}
+                {{ form_start(form) }}
+
+                {{ form_row(form.score) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.save) }}
+
+                {{ form_end(form) }}
+
+            </div>
+            <div class="col-12 col-md-3 pb-4">
+                <p><strong>Hier enkele tips</strong></p>
+                <p><i>Wat schrijf je in je review?</i></p>
+                <p>Jouw mening. We willen graag weten waarom je een artikel wel of niet leuk vindt. Ook kun je het artikel vergelijken met andere artikelen die je kent.</p>
+                <p><strong>Let op:</strong></p>
+                <p>Gebruik het product voordat je het beoordeelt.</p>
+                <p>Richt je op de kenmerken van het product en wees specifiek.</p>
+                <p>Vermijd ongepaste taal, persoonlijke informatie en informatie over andere bedrijven en websites.</p>
+                <p>Wil je iets anders kwijt? Neem contactForm op met onze klantenservice. </p>
+            </div>
+        </div>
+    </div>
+    <div class="" id="form_search_results_1"></div>
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}

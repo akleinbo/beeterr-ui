@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}!Hello DefaultController!{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>{{ page.page.title }}</h1>
+
+                <p>top menu</p>
+                <ul>
+                    {% for menu in page.menus.top  %}
+                        <li>{{ menu.title }}</li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+            <div class="col-12">
+                <p>Header menu</p>
+                <ul>
+                    {% for menu in page.menus.header %}
+                        <li>{{ menu.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-3">
+                <p>left menu</p>
+                <ul>
+                    {% for menu in page.menus.left %}
+                        <li>{{ menu.title }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-9">
+
+                {{ page.page.banner|raw }}
+
+                {#<div id="app">#}
+                    {#{{ message }}#}
+                {#</div>#}
+                {#<script>#}
+                    {#var app = new Vue({#}
+                        {#el: '#app',#}
+                        {#data: {#}
+                            {#message: 'Hello Vue!'#}
+                        {#}#}
+                    {#});#}
+                {#</script>#}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

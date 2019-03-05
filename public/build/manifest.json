@@ -1,0 +1,9 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/contactForm,.js": "/build/contactForm,.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors~app.js": "/build/vendors~app.js",
+  "build/vendors~app~contactForm,.js": "/build/vendors~app~contactForm,.js",
+  "build/vendors~contactForm,.js": "/build/vendors~contactForm,.js"
+}

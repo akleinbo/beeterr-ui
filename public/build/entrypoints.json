@@ -1,0 +1,23 @@
+{
+  "entrypoints": {
+    "app": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~contactForm,.js",
+        "/build/vendors~app.js",
+        "/build/app.js"
+      ],
+      "css": [
+        "/build/app.css"
+      ]
+    },
+    "contactForm,": {
+      "js": [
+        "/build/runtime.js",
+        "/build/vendors~app~contactForm,.js",
+        "/build/vendors~contactForm,.js",
+        "/build/contactForm,.js"
+      ]
+    }
+  }
+}
