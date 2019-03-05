@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center my-5">
             <div class="col-lg-9">
-                {#<img src="{{ page.page.images|first }}" class="img-fluid img-thumbnail" alt="White desk lamp beside green plant">#}
+                <img src="{{ page.page.images|first }}" class="img-fluid img-thumbnail" alt="White desk lamp beside green plant">
             </div>
         </div>
     </div>
@@ -13,15 +13,18 @@
                     <article class="pb-2">
 
                         <h1 class="text-center">{{ page.page.title }}</h1>
-                        <p class="small mb-5 text-center"><span class="text-secondary">Gepubliceerd op </span><span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span></p>
+                        <p class="small mb-5 text-center">
+                            <span class="text-secondary">Gepubliceerd op </span>
+                            <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>
+                        </p>
                         <p class="lead">{{ page.page.banner|raw }}</p>
 
                         {{ page.page.description|raw }}
 
-                        <figure class="figure mt-2">
-                            <img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">
-                            <figcaption class="figure-caption p-2 text-center">This is a caption</figcaption>
-                        </figure>
+                        {#<figure class="figure mt-2">#}
+                            {#<img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">#}
+                            {#<figcaption class="figure-caption p-2 text-center">This is a caption</figcaption>#}
+                        {#</figure>#}
 
                         <p class="small mt-5 text-center">
                             <span class=" text-secondary">Tagged: </span>
@@ -40,10 +43,7 @@
                             </div>
                         {% endfor %}
                     </article>
-
                     <hr class="sep border-primary">
-
-
                 </div>
             </div>
         </div>
