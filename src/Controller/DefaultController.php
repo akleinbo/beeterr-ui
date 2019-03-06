@@ -9,8 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    // const API_END_POINT = 'https://beeterr.com/api/site/3';
-    const API_END_POINT = 'http://beeterr.local/api/site/3';
+     const API_END_POINT = 'https://beeterr.com/api/site/3';
+//    const API_END_POINT = 'http://beeterr.local/api/site/3';
 
     /**
      * @param ApiManager $apiManager
