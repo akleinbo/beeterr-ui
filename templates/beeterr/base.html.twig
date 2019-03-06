@@ -18,7 +18,7 @@
     {% block headerJavascripts %}{% endblock %}
 
     {% block headerAnalyticsCode %}
-        {{ site.analyticsCode|raw }}
+        {{ site.headerCode|raw }}
     {% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
@@ -32,6 +32,10 @@
     <script src="{{ asset('templates/beeterr/js/jquery.slim.min.js') }}"></script>
     <script src="{{ asset('templates/beeterr/js/popper.min.js') }}"></script>
     <script src="{{ asset('templates/beeterr/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+
+{% block bodyAnalyticsCode %}
+    {{ site.bodyCode|raw }}
 {% endblock %}
 
 </body>

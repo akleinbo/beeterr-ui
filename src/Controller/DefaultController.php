@@ -9,7 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    const API_END_POINT = 'https://beeterr.com/api/site/3';
+    // const API_END_POINT = 'https://beeterr.com/api/site/3';
+    const API_END_POINT = 'http://beeterr.local/api/site/3';
 
     /**
      * @param ApiManager $apiManager
@@ -28,6 +29,7 @@ class DefaultController extends AbstractController
         } else {
 
             // echo '<pre>' . print_r($site, 1). '</pre>';
+            // $site['analyticsCode'] = json_decode($site['analyticsCode'], true);
 
             return $this->render($site['template'] . '/' . $page['route'] . '/index.html.twig', [
                 'site' => $site,
