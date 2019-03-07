@@ -16,171 +16,18 @@
         </div>
     </div>
     <div class="bg-skew bg-skew-light">
-        <div class="container">
-            <div class="row pt-5">
-                <div class="col-sm-6 col-md-4 mb-4 mb-md-5">
-                    <div class="pr-lg-3">
-                            <span class="icon icon-primary mb-3">
-                                <i class="icon-inner fab fa-accessible-icon" aria-hidden="true"></i>
-                            </span>
-                        <h3 class="h4">{{ 'Eenvoudig'|trans }}</h3>
-                        <p class="mb-md-0">{{ 'Ontwikkeld om het eenvoudig te maken en te houden.'|trans }}</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 mb-4 mb-md-5">
-                    <div class="pr-lg-3">
-                            <span class="icon icon-primary mb-3">
-                                <i class="icon-inner fas fa-mobile-alt" aria-hidden="true"></i>
-                            </span>
-                        <h3 class="h4">{{ 'Mobile First'|trans }}</h3>
-                        <p class="mb-md-0">{{ 'De wereld is mobiel en zo ook jouw website.'|trans }}</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 mb-4 mb-md-5">
-                    <div class="pr-lg-3">
-                            <span class="icon icon-primary mb-3">
-                                <i class="icon-inner fas fa-code" aria-hidden="true"></i>
-                            </span>
-                        <h3 class="h4">{{ 'Valid Code'|trans }}</h3>
-                        <p class="mb-md-0">{{ 'W3C gecodeerd zodat in elke browser jouw pagina goed werkt.'|trans }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Call to action -->
-        <hr class="sep border-primary">
-        <div class="container py-5">
-            <div class="text-center">
-                <h2 class="mb-4">{{ 'Bouw jouw website'|trans }}</h2>
-                <div class="mb-4">
-                    <a class="btn btn-pill btn-primary" href="https://beeterr.com" role="button">{{ 'Start vandaag'|trans }}</a>
-                </div>
-                <a class="link-cta" href="{{ path('default', {'slug':'componenten'}) }}">{{ 'Lees meer'|trans }}</a>
-            </div>
-        </div>
-
-        {#<!-- Testimonials -->#}
-        {#<div class="container">#}
-            {#<h2 class="h3 mt-5 mb-4 text-center">What people are saying…</h2>#}
-            {#<div class="row py-5">#}
-                {#<div class="col-md">#}
-                    {#<blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">#}
-                        {#<img class="avatar avatar-md mb-4" src="{{ asset('templates/beeterr/img/leo-gill.jpg') }}" alt="Leo Gill">#}
-                        {#<p class="text-secondary">Boost theme is awesome! We've seen amazing results already.</p>#}
-                        {#<cite class="small text-uppercase">Leo Gill</cite>#}
-                    {#</blockquote>#}
-                {#</div>#}
-                {#<div class="col-md">#}
-                    {#<blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">#}
-                        {#<img class="avatar avatar-md mb-4" src="{{ asset('templates/beeterr/img/renee-sims.jpg') }}" alt="Renee Sims">#}
-                        {#<p class="text-secondary">It really saves me time and effort. Boost theme is exactly what our business has been lacking.</p>#}
-                        {#<cite class="small text-uppercase">Renee Sims</cite>#}
-                    {#</blockquote>#}
-                {#</div>#}
-                {#<div class="col-md">#}
-                    {#<blockquote class="bg-white rounded shadow mb-4 p-4 p-lg-5 text-center">#}
-                        {#<img class="avatar avatar-md mb-4" src="{{ asset('templates/beeterr/img/dallas-kwok.jpg') }}" alt="Dallas Kwok">#}
-                        {#<p class="text-secondary">Boost theme impressed me on multiple levels.</p>#}
-                        {#<cite class="small text-uppercase">Dallas Kwok</cite>#}
-                    {#</blockquote>#}
-                {#</div>#}
-            {#</div>#}
-        {#</div>#}
-
+        {% for banner in page.banners|slice(0,2) %}
+            {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+        {% endfor %}
     </div>
-
-    <!-- Features -->
-    <div class="container">
-        <div class="row justify-content-lg-between align-items-lg-center py-4 py-lg-5">
-            <div class="col-lg-5 mb-4 mb-lg-0">
-                <h2>{{ 'Verbeterd' }}</h2>
-                <hr class="sep border-primary ml-0 mb-3 text-left" role="presentation">
-                {#<p>Since this theme is based on Bootstrap, it includes all Bootstrap itself does, but with new aesthetics and some extra classes.</p>#}
-                <p>{{ 'Volledig vernieuwd en geoptimalieerd systeem. ' }}</p>
-            </div>
-            <div class="col-lg-6">
-                <img src="{{ asset('templates/beeterr/img/people.jpg') }}" class="img-fluid img-thumbnail" alt="People working with a laptop">
-            </div>
-        </div>
-        {#<div class="row justify-content-lg-between align-items-lg-center py-4 py-lg-5">#}
-            {#<div class="col-lg-5 order-lg-2 mb-4 mb-lg-0">#}
-                {#<h2>Easy to customize</h2>#}
-                {#<hr class="sep border-primary ml-0 mb-3 text-left" role="presentation">#}
-                {#<p>Based on the Bootstrap 4 codebase, Boost's code is easy to understand and to customize.</p>#}
-            {#</div>#}
-            {#<div class="col-lg-6 order-lg-1">#}
-                {#<img src="{{ asset('templates/beeterr/img/woman.jpg') }}" class="img-fluid img-thumbnail" alt="Woman talking on the phone">#}
-            {#</div>#}
-        {#</div>#}
+    <div class="">
+        {% for banner in page.banners|slice(2, 4) %}
+            {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+        {% endfor %}
     </div>
-
     <div class="bg-skew bg-skew-light">
-
-        <!-- Accordion -->
-        <div class="container">
-            <h2 class="my-5 text-center">{{ 'Veelgestelde vragen'|trans }}</h2>
-            <div class="row justify-content-lg-center pb-5">
-                <div class="col-lg-9">
-                    <div class="accordion" id="accordionQuestions">
-                        <div class="card shadow mb-2">
-                            <div class="card-header" id="headingOne">
-                                <h3 class="card-title">
-                                    <a class="collapsed" role="button" href="#collapseOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        {{ 'Welke betaalmethoden ondersteunen jullie?'|trans }} <i class="fas fa-angle-down float-right rotate-icon"></i>
-                                    </a>
-                                </h3>
-                            </div>
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionQuestions">
-                                <div class="card-body">
-                                    <p>Er zijn verschillende betaalmethoden beschikbaar waaronder Ideal en Paypal. Voor grote klanten is eveneens op factuur een mogelijkheid. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow mb-2">
-                            <div class="card-header" id="headingTwo">
-                                <h3 class="card-title">
-                                    <a class="collapsed" role="button" href="#collapseTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Ik heb een bestaande website, kunnen jullie deze overzetten? <i class="fas fa-angle-down float-right rotate-icon"></i>
-                                    </a>
-                                </h3>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionQuestions">
-                                <div class="card-body">
-                                    <p>We kunnen elke website overzetten naar ons systeem echter, er kan functionaliteit zijn die wij nog niet ondersteunen of verouderd is. Indien het een aantal pagina's betreft helpen we u gratis op weg. Voor grote websites is een consultatie gesprek de beste aanpak. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card shadow mb-2">
-                            <div class="card-header" id="headingThree">
-                                <h3 class="card-title">
-                                    <a class="collapsed" role="button" href="#collapseThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Hoe verander ik het thema van mijn website?<i class="fas fa-angle-down float-right rotate-icon"></i>
-                                    </a>
-                                </h3>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionQuestions">
-                                <div class="card-body">
-                                    <p>Er zijn in de backend verschillende thema's beschikbaar, deze kun je eenvoudig activeren. Wilt u iets unieks dan kunnen we ook een thema voor u designen of over overzetten. Neem hiervoor contactForm op met onze klantenservice. </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr class="sep border-primary">
-
-        <!-- Call to action -->
-        <div class="container py-5">
-            <div class="text-center">
-                <h2 class="mb-4">{{ 'Klaar voor de start?'|trans }}</h2>
-                <div class="mb-4">
-                    <a class="btn btn-pill btn-primary" href="https://beeterr.com" role="button">{{ 'Probeer gratis'|trans }}</a>
-                </div>
-                <a class="link-cta" href="{{ path('default', {'slug':'componenten'}) }}">{{ 'Lees meer'|trans }}</a>
-            </div>
-        </div>
-
-    </div><!-- end bg-skew -->
+        {% for banner in page.banners|slice(4, 8) %}
+            {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+        {% endfor %}
+    </div>
 </main>

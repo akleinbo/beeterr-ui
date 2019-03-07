@@ -1,0 +1,15 @@
+<!-- CTA -->
+<hr class="sep border-primary">
+<div class="container py-5">
+    <div class="">
+        <div class="text-center">
+            {% for item in banner.items %}
+                <h2 class="mb-4">{{ item.title }}</h2>
+                <div class="mb-4">
+                    <a class="btn btn-pill btn-primary" href="{{ item.CTAS[0].href }}" role="button">{{ item.CTAS[0].title  }}</a>
+                </div>
+                <a class="link-cta" href="{{ item.CTAS[1].href  }}">{{ item.CTAS[1].title  }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
