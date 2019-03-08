@@ -6,9 +6,10 @@
             {% for item in banner.items %}
                 <h2 class="mb-4">{{ item.title }}</h2>
                 <div class="mb-4">
-                    <a class="btn btn-pill btn-primary" href="{{ item.CTAS[0].href }}" role="button">{{ item.CTAS[0].title  }}</a>
+                    {#{{ dump(item) }}#}
+                    <a class="btn btn-pill btn-primary" href="{{ item.CTAS[0].slug }}" role="button">{{ item.CTAS[0].title  }}</a>
                 </div>
-                <a class="link-cta" href="{{ item.CTAS[1].href  }}">{{ item.CTAS[1].title  }}</a>
+                <a class="link-cta" href="{{ item.CTAS[1].slug  }}">{{ item.CTAS[1].title  }}</a>
             {% endfor %}
         </div>
     </div>

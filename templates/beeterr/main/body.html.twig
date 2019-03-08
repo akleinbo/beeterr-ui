@@ -16,17 +16,17 @@
         </div>
     </div>
     <div class="bg-skew bg-skew-light">
-        {% for banner in page.banners|slice(0,2) %}
+        {% for banner in page.banners|slice(0,3) %}
             {% include site.template~'/banners/'~banner.type~'.html.twig' %}
         {% endfor %}
     </div>
     <div class="">
-        {% for banner in page.banners|slice(2, 4) %}
+        {% for banner in page.banners|slice(3, 5) %}
             {% include site.template~'/banners/'~banner.type~'.html.twig' %}
         {% endfor %}
     </div>
     <div class="bg-skew bg-skew-light">
-        {% for banner in page.banners|slice(4, 8) %}
+        {% for banner in page.banners|slice(5, 8) %}
             {% include site.template~'/banners/'~banner.type~'.html.twig' %}
         {% endfor %}
     </div>
