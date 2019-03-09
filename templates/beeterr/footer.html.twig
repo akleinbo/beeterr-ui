@@ -6,30 +6,33 @@
                 <p>{{ site.description|raw }}</p>
             </div>
             <div class="col-4 col-md-2 mb-4">
-                <h3 class="h5 mb-3">About</h3>
+                <h3 class="h5 mb-3">Over ons</h3>
                 <ul class="nav flex-column">
-                    <li class="mb-1"><a href="#">About</a></li>
-                    <li class="mb-1"><a href="#">Team</a></li>
-                    <li class="mb-1"><a href="#">Careers</a></li>
-                    <li class="mb-1"><a href="#">Blog</a></li>
+                    {% for menu in page.menus.footerLeft %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="col-4 col-md-2 mb-4">
-                <h3 class="h5 mb-3">Services</h3>
+                <h3 class="h5 mb-3">Service</h3>
                 <ul class="nav flex-column">
-                    <li class="mb-1"><a href="#">Design</a></li>
-                    <li class="mb-1"><a href="#">Themes</a></li>
-                    <li class="mb-1"><a href="#">Branding</a></li>
-                    <li class="mb-1"><a href="#">CMS</a></li>
+                    {% for menu in page.menus.footerMiddle %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div class="col-4 col-md-2 mb-4">
                 <h3 class="h5 mb-3">Help</h3>
                 <ul class="nav flex-column">
-                    <li class="mb-1"><a href="#">FAQ</a></li>
-                    <li class="mb-1"><a href="#">Contact</a></li>
-                    <li class="mb-1"><a href="#">Phones</a></li>
-                    <li class="mb-1"><a href="#">Chat</a></li>
+                    {% for menu in page.menus.footerRight %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>

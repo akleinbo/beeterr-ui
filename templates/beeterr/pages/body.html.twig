@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center my-5">
             <div class="col-lg-9">
-                <img src="{{ page.page.images|first }}" class="img-fluid img-thumbnail" alt="White desk lamp beside green plant">
+                <img src="{{ page.page.images|first }}" class="img-fluid img-thumbnail" alt="">
             </div>
         </div>
     </div>
@@ -15,6 +15,7 @@
                         <h1 class="text-center">{{ page.page.title }}</h1>
                         <p class="small mb-5 text-center">
                             <span class="text-secondary">Gepubliceerd op </span>
+                            {#{{ dump(page.page) }}#}
                             <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>
                         </p>
                         <p class="lead">{{ page.page.banner|raw }}</p>
