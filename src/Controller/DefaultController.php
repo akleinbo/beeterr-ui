@@ -9,10 +9,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    // todo: setParameter global in .env or site object
-    const API_END_POINT = 'https://beeterr.com/api/site/3';
-//    const API_ENgit statusD_POINT = 'http://beeterr.local/api/site/3';
-
     /**
      * @param ApiManager $apiManager
      * @param string     $slug
@@ -21,7 +17,7 @@ class DefaultController extends AbstractController
      */
     public function index(ApiManager $apiManager, $slug = 'home')
     {
-        if(!$site = $apiManager->getSite(self::API_END_POINT)) {
+        if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
             return new Response('Sorry, no site found', Response::HTTP_BAD_REQUEST);
         } elseif(!$page = $apiManager->getPage($apiManager, $site, $slug)) {
             return new Response('Sorry, no page found[1]', Response::HTTP_BAD_REQUEST);
