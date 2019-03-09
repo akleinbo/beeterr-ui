@@ -1,0 +1,51 @@
+<main id="content">
+    <div class="bg-light mb-5">
+        <div class="container">
+            <div class="row py-5">
+                <div class="col-lg-9">
+                    <h1 class="display-4 mb-4">{{ page.page.title }}</h1>
+                    {{ page.page.banner }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 pl-lg-4 order-lg-2">
+                <nav id="nav-comp" class="navbar navbar-expand-lg navbar-light sticky-top mb-3 pl-0" aria-label="Components navigation">
+                    <a class="collapsed btn btn-outline-dark btn-block d-lg-none mb-3 p-3" href="#collapseOne" data-toggle="collapse" data-target="#navbarComp" aria-expanded="false" aria-controls="navbarComp" aria-label="Toggle navigation">
+                        <span class="text-uppercase">Navigation<i class="fas fa-angle-down ml-4 rotate-icon"></i></span>
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarComp">
+                        <ul class="navbar-nav flex-column">
+                            {% for menu in page.page.children %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                                </li>
+                            {% endfor %}
+                            <li class="nav-item d-none d-lg-block">
+                                <a class="nav-link" href="#">Go top &uarr;</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-lg-9 order-lg-1">
+                <div class="row">
+                    {% for item in page.page.children %}
+                        <div class="col-12 col-md-4">
+                            <div class="card shadow">
+                                <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ item.title }}</h5>
+                                    <p class="card-text">{{ item.banner|slice(0, 100)|raw }}</p>
+                                    <a href="{{ item.slug }}" class="btn btn-pill btn-primary btn-sm">Lees meer</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
