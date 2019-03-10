@@ -87,12 +87,6 @@ class ContactForm extends React.Component {
                     <label htmlFor="messageTetxarea" className="small text-uppercase">Message <span className="text-primary">*</span></label>
                     <textarea className="form-control rounded" id="message" rows="9" placeholder="Enter your message" name="message" value={this.state.messageValue} onChange={this.handleChange}></textarea>
                 </div>
-                <div className="form-group form-check">
-                    <input type="checkbox" className="form-check-input" id="inputCheck" />
-                    <label className="form-check-label small" htmlFor="inputCheck">
-                        <a href="#">I agree with the terms and conditions</a>
-                    </label>
-                </div>
                 <button type="submit" className="btn btn-pill btn-primary">Submit</button>
             </form>
         );
