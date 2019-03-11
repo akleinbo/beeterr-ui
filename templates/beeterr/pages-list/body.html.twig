@@ -4,7 +4,7 @@
             <div class="row py-5">
                 <div class="col-lg-9">
                     <h1 class="display-4 mb-4">{{ page.page.title }}</h1>
-                    {{ page.page.banner }}
+                    {{ page.page.banner|raw }}
                 </div>
             </div>
         </div>
@@ -18,7 +18,12 @@
                     </a>
                     <div class="collapse navbar-collapse" id="navbarComp">
                         <ul class="navbar-nav flex-column">
-                            {% for menu in page.page.children %}
+                            {#{% for menu in page.page.children %}#}
+                                {#<li class="nav-item">#}
+                                    {#<a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>#}
+                                {#</li>#}
+                            {#{% endfor %}#}
+                            {% for menu in page.scopes %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
                                 </li>
@@ -32,8 +37,8 @@
             </div>
             <div class="col-lg-9 order-lg-1">
                 <div class="row">
-                    {% for item in page.page.children %}
-                        <div class="col-12 col-md-4">
+                    {% for item in page.scopes %}
+                        <div class="col-12 col-md-4 pb-3">
                             <div class="card shadow">
                                 <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
                                 <div class="card-body">
