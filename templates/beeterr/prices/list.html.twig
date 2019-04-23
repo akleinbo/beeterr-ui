@@ -1,0 +1,136 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <main id="content">
+        <div class="bg-light mb-5">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-lg-9">
+                        <h1 class="display-4 mb-4">{{ page.page.title }}</h1>
+                        <hr class="sep border-primary ml-0 mb-3 text-left" role="presentation">
+                        {{ page.page.banner|raw }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <h3 class="text-center mt-5 mb-4">{{ 'Kies of probeer GRATIS.'|trans }}</h3>
+
+            <!-- Pricing cards -->
+            <div class="row py-5">
+                <div class="col-lg-4">
+                    <div class="card card-price shadow-lg mb-4">
+                        <div class="card-header">
+                            <h3 class="h4 font-weight-normal">Unlimited</h3>
+                            <p class="text-muted">Ideaal voor een goed vindbare bedrijf websites</p>
+                            <span class="d-block h1 my-2"><span class="h2">&euro;</span> 29,95</span>
+                            <span class="d-block text-muted">/ maand</span>
+                            <span class="d-block text-muted">Jaarlijkse afrekening</span>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-4">
+                                <li class="py-2 text-secondary"><span class="fa fa-check-circle text-success"></span> Alle basisfuncties</li>
+                                <li class="py-2 text-secondary">Meerdere emailadressen</li>
+                                <li class="py-2 text-secondary">Meerdere domeinen</li>
+                                <li class="py-2 text-secondary">Opslag 5GB</li>
+                                <li class="py-2 text-secondary">Bandbreedte onbeperkt</li>
+                                <li class="py-2 text-secondary">Themes Unlimited</li>
+                                <li class="py-2 text-secondary">Pagina's onbeperkt</li>
+{#                                <li class="py-2 text-secondary">Elke maand opzegbaar</li>#}
+                            </ul>
+                            <a class="btn btn-pill btn-outline-primary mb-3" href="https://beeterr.com/nl/register">Nu proberen</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-price card-featured shadow-lg mb-4">
+                        <div class="card-header">
+                            <h3 class="h4 font-weight-normal">Standard</h3>
+                            <p class="text-muted">Ideaal voor grootte & professionele websites</p>
+                            <span class="d-block h1 my-2"><span class="h2">&euro;</span> 9,95</span>
+                            <span class="d-block text-muted">/ maand</span>
+                            <span class="d-block text-muted">Jaarlijkse afrekening</span>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-4">
+                                <li class="py-2 text-secondary"><span class="fa fa-check-circle text-success"></span> Alle basisfuncties</li>
+                                <li class="py-2 text-secondary">Eigen emailadres</li>
+                                <li class="py-2 text-secondary">Eigen domein (nl)</li>
+                                <li class="py-2 text-secondary">Opslag 2GB</li>
+                                <li class="py-2 text-secondary">Bandbreedte 10 GB</li>
+                                <li class="py-2 text-secondary">Themes standard</li>
+                                <li class="py-2 text-secondary">Pagina's 200</li>
+{#                                <li class="py-2 text-secondary">Elke maand opzegbaar</li>#}
+                            </ul>
+                            <a class="btn btn-pill btn-primary mb-3" href="https://beeterr.com/nl/register">Nu proberen</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card card-price shadow-lg mb-4">
+                        <div class="card-header">
+                            <h3 class="h4 font-weight-normal">Basic</h3>
+                            <p class="text-muted">Ideaal voor kleine websites of om het even te proberen.</p>
+                            <span class="d-block h1 my-2"><span class="h2">&euro;</span> 0,00</span>
+                            <span class="d-block text-muted">/ maand</span>
+                            <span class="d-block text-muted">Jaarlijkse afrekening</span>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-4">
+                                <li class="py-2 text-secondary"><span class="fa fa-check-circle text-success"></span> Alle basisfuncties</li>
+                                <li class="py-2 text-secondary">Geen emailadres</li>
+                                <li class="py-2 text-secondary">Geen domein</li>
+                                <li class="py-2 text-secondary">Opslag 500 MB</li>
+                                <li class="py-2 text-secondary">Bandbreedte 1 GB</li>
+                                <li class="py-2 text-secondary">Themes basic</li>
+                                <li class="py-2 text-secondary">Pagina's 100</li>
+                                {#                                <li class="py-2 text-secondary">Elke maand opzegbaar</li>#}
+                            </ul>
+                            <a class="btn btn-pill btn-outline-primary mb-3" href="https://beeterr.com/nl/register">Nu proberen</a>
+                        </div>
+                    </div>
+                </div>
+{#                <div class="col-lg-4">#}
+{#                    <div class="card card-price shadow-lg mb-4">#}
+{#                        <div class="card-header">#}
+{#                            <h3 class="h4 font-weight-normal">Unlimited</h3>#}
+{#                            <span class="d-block h1 my-2"><span class="h2">$</span>10</span>#}
+{#                            <span class="d-block text-muted">per month</span>#}
+{#                        </div>#}
+{#                        <div class="card-body">#}
+{#                            <ul class="list-unstyled mb-4">#}
+{#                                <li class="py-2 text-secondary">Unlimited downloads</li>#}
+{#                                <li class="py-2 text-secondary">Online support</li>#}
+{#                                <li class="py-2 text-secondary">Easy payment</li>#}
+{#                                <li class="py-2 text-secondary">Easy cancellation</li>#}
+{#                            </ul>#}
+{#                            <a class="btn btn-pill btn-outline-primary mb-3" href="https://beeterr.com/nl/register">Nu proberen</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+            </div>
+        </div>
+        <hr class="sep border-primary">
+
+
+{#        <li class="py-2 text-secondary">geen aansluitkosten</li>#}
+{#        MOBIELE WEBSITE#}
+{#        HTTPS-BEVEILIGING#}
+{#        GEEN AANSLUITKOSTEN#}
+{#        PREMIUM SUPPORT#}
+
+    </main>
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}
