@@ -1,0 +1,51 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <main id="content">
+        <div class="container">
+            <div class="row justify-content-lg-between align-items-lg-center py-5">
+                <div class="col-lg-6">
+                    <p class="lead mb-4">
+                        {{ page.page.banner|raw }}
+                    </p>
+                    <a class="btn btn-pill btn-primary" href="https://beeterr.com" target="_blank" role="button">{{ 'Nu proberen'|trans }}</a>
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ asset(page.page.images|first) }}" class="d-none d-lg-block img-fluid img-thumbnail" alt="Workspace">
+                    {#<div class="iphone-x mb-5 mx-auto">#}
+                    {#<div class="screen" style="background-image: url('{{ page.page.images|first }}')"></div>#}
+                    {#</div>#}
+                </div>
+            </div>
+        </div>
+        <div class="bg-skew bg-skew-light">
+            {% for banner in page.banners|slice(0,3) %}
+                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+            {% endfor %}
+        </div>
+        <div class="">
+            {% for banner in page.banners|slice(3, 5) %}
+                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+            {% endfor %}
+        </div>
+        <div class="bg-skew bg-skew-light">
+            {% for banner in page.banners|slice(5, 8) %}
+                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+            {% endfor %}
+        </div>
+    </main>
+
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}

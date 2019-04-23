@@ -25,7 +25,7 @@ class DefaultController extends AbstractController
             return new Response('<h1>No page found</h1>[2]', Response::HTTP_NOT_FOUND);
         } else {
 
-            return $this->render($site['template'] . '/' . $page['route'] . '/index.html.twig', [
+            return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
                 'site' => $site,
                 'page' => $page
             ]);
