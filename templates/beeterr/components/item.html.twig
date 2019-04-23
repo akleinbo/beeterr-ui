@@ -50,10 +50,19 @@
                                 <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
                                 <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>
                             </p>
-                            <figure class="figure mt-2">
-                                <img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">
-                                <figcaption class="figure-caption p-2 text-center">{{ page.page.title }}</figcaption>
-                            </figure>
+
+                            {% if page.page.images|first is empty %}
+                                <div class="text-center p-3">
+                                    <span class="icon icon-lg icon-success">
+                                        <i class="icon-inner fas fa-cogs"></i>
+                                    </span>
+                                </div>
+                            {% else %}
+                                <figure class="figure mt-2">
+                                    <img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">
+                                    <figcaption class="figure-caption p-2 text-center">{{ page.page.title }}</figcaption>
+                                </figure>
+                            {% endif %}
 
                             {{ page.page.banner|raw }}
                             {{ page.page.description|raw }}
