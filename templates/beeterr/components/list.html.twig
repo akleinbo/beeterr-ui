@@ -63,7 +63,7 @@
                                         <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
                                     {% endif %}
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ item.title }}</h5>
+                                        <h5 class="card-title" style="white-space: nowrap;">{{ item.title }}</h5>
                                         <p class="card-text">{{ item.banner|slice(0, 100)|raw }}</p>
                                         <a href="{{ item.slug }}" class="btn btn-pill btn-primary btn-sm">Lees meer</a>
                                     </div>
