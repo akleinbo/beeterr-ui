@@ -64,7 +64,18 @@
                             {#</div>#}
                             <div class="col-sm-6 col-xl-4">
                                 <div class="card card-hover my-3">
-                                    <img class="card-img-top h-100" src="{{ item.images|first }}" alt="{{ item.title }}">
+
+                                    {% if item.images|first is empty %}
+                                        <div class="text-center p-3">
+                                            <span class="icon icon-lg icon-success">
+                                                <i class="icon-inner fas fa-user"></i>
+                                            </span>
+                                        </div>
+                                    {% else %}
+                                        <img class="card-img-top h-100" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% endif %}
+
+
                                     <div class="card-body text-center">
                                         <h4 class="card-title h5">{{ item.title }}</h4>
                                         {#<p class="text-secondary">CEO</p>#}
