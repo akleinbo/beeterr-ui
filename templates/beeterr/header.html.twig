@@ -11,26 +11,27 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
                     {% for menu in page.menus.topRight %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
-                        </li>
+                        {% if menu.children is empty %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="{{ path('default', {'slug':menu.slug}) }}" id="DropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ menu.title }}
+{#                                    <i class="fas fa-angle-down fa-sm ml-1"></i>#}
+                                </a>
+                                <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu">
+                                    <a class="dropdown-item" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                                    {% for m in menu.children %}
+                                        <a class="dropdown-item" href="{{ path('default', {'slug':m.slug}) }}">{{ m.title }}</a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        {% endif %}
                     {% endfor %}
-
-                    {#<li class="nav-item dropdown">#}
-                        {#<a class="nav-link dropdown-toggle" href="#" id="DropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages<i class="fas fa-angle-down fa-sm ml-1"></i></a>#}
-                        {#<div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu">#}
-                            {#<a class="dropdown-item" href="landing.html">Landing</a>#}
-                            {#<a class="dropdown-item" href="inner.html">Inner</a>#}
-                        {#</div>#}
-                    {#</li>#}
-
-                    {#<li class="nav-item">#}
-                        {#<a class="nav-link" href="docs.html">Docs</a>#}
-                    {#</li>#}
-
                 </ul>
             </div>
-
         </nav>
     </div>
 </header>
