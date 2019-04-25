@@ -53,7 +53,15 @@
                         {% for item in page.page.children %}
                             <div class="col-12 col-md-4 pb-3">
                                 <div class="card shadow">
-                                    <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% if item.images|first is empty %}
+                                        <div class="text-center p-3">
+                                            <span class="icon icon-lg icon-success">
+                                                <i class="icon-inner fas fa-question-circle"></i>
+                                            </span>
+                                        </div>
+                                    {% else %}
+                                        <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% endif %}
                                     <div class="card-body">
                                         <h5 class="card-title">{{ item.title }}</h5>
                                         <p class="card-text">{{ item.banner|slice(0, 100)|raw }}</p>
