@@ -22,7 +22,10 @@
 {#                                    <i class="fas fa-angle-down fa-sm ml-1"></i>#}
                                 </a>
                                 <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu">
-                                    <a class="dropdown-item" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                                    <a class="dropdown-item" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                                        <span class="fa fa-list"></span>
+                                        {{ menu.title }}
+                                    </a>
                                     {% for m in menu.children %}
                                         <a class="dropdown-item" href="{{ path('default', {'slug':m.slug}) }}">{{ m.title }}</a>
                                     {% endfor %}
