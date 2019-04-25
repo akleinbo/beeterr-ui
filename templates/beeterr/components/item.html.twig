@@ -43,49 +43,47 @@
                     </nav>
                 </div>
                 <div class="col-lg-9 order-lg-1">
-                    <div class="row">
-                        <article class="pb-2">
-                            <h1 class="text-center">{{ page.page.title }}</h1>
-                            <p class="small mb-5 text-center">
-                                <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
-                                <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>
-                            </p>
+                    <article class="pb-2">
+                        <h1 class="text-center">{{ page.page.title }}</h1>
+                        <p class="small mb-5 text-center">
+                            <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
+                            <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>
+                        </p>
 
-                            {% if page.page.images|first is empty %}
-                                <div class="text-center p-3">
+                        {% if page.page.images|first is empty %}
+                            <div class="text-center p-3">
                                     <span class="icon icon-lg icon-success">
                                         <i class="icon-inner fas fa-cogs"></i>
                                     </span>
-                                </div>
-                            {% else %}
-                                <figure class="figure mt-2">
-                                    <img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">
-                                    <figcaption class="figure-caption p-2 text-center">{{ page.page.title }}</figcaption>
-                                </figure>
-                            {% endif %}
+                            </div>
+                        {% else %}
+                            <figure class="figure mt-2">
+                                <img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">
+                                <figcaption class="figure-caption p-2 text-center">{{ page.page.title }}</figcaption>
+                            </figure>
+                        {% endif %}
 
-                            {{ page.page.banner|raw }}
-                            {{ page.page.description|raw }}
+                        {{ page.page.banner|raw }}
+                        {{ page.page.description|raw }}
 
-                            <p class="small mt-5 text-center">
-                                <span class=" text-secondary">Tagged: </span>
-                                {% for tag in page.tags %}
-                                    <a href="#" class="text-dark">{{ tag }}</a>
-                                {% endfor %}
-                            </p>
-
-                            {% for user in page.users %}
-                                <div class="media my-5">
-                                    <img class="avatar avatar-lg mr-3" src="{{ user.images|first }}" alt="{{ user.surname }}, {{ user.forename }}">
-                                    <div class="media-body">
-                                        <h3 class="h5 mt-0">{{ user.surname }}, {{ user.forename }}</h3>
-                                        <p class="mb-0 text-secondary">{{ user.title }}</p>
-                                    </div>
-                                </div>
+                        <p class="small mt-5 text-center">
+                            <span class=" text-secondary">Tagged: </span>
+                            {% for tag in page.tags %}
+                                <a href="#" class="text-dark">{{ tag }}</a>
                             {% endfor %}
-                        </article>
-                        <hr class="sep border-primary">
-                    </div>
+                        </p>
+
+                        {% for user in page.users %}
+                            <div class="media my-5">
+                                <img class="avatar avatar-lg mr-3" src="{{ user.images|first }}" alt="{{ user.surname }}, {{ user.forename }}">
+                                <div class="media-body">
+                                    <h3 class="h5 mt-0">{{ user.surname }}, {{ user.forename }}</h3>
+                                    <p class="mb-0 text-secondary">{{ user.title }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </article>
+                    <hr class="sep border-primary">
                 </div>
             </div>
         </div>
