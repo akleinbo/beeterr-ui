@@ -10,8 +10,8 @@
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,700%7CMerriweather+Sans:300,400,700">
-        <link rel="stylesheet" href="{{ asset('templates/beeterr/css/fontawesome-all.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('templates/beeterr/css/theme.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('templates/boost/css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('templates/boost/css/theme.min.css') }}">
     {% endblock %}
 
     {% block headerJavascripts %}{% endblock %}
@@ -28,9 +28,9 @@
 
 {% block javascriptFooter %}
     {{ encore_entry_script_tags('app') }}
-    <script src="{{ asset('templates/beeterr/js/jquery.slim.min.js') }}"></script>
-    <script src="{{ asset('templates/beeterr/js/popper.min.js') }}"></script>
-    <script src="{{ asset('templates/beeterr/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('templates/boost/js/jquery.slim.min.js') }}"></script>
+    <script src="{{ asset('templates/boost/js/popper.min.js') }}"></script>
+    <script src="{{ asset('templates/boost/js/bootstrap.min.js') }}"></script>
 {% endblock %}
 
 {% block bodyAnalyticsCode %}

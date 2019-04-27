@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     api_end_point: '%env(API_END_POINT)%'
+    api_end_point_example: '%env(API_END_POINT_EXAMPLE)%'
     api_end_point_secret: '%env(API_END_POINT_SECRET)%'
 
 services:
