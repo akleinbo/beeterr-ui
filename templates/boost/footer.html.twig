@@ -40,15 +40,42 @@
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
             <p class="small text-muted">&copy; {{ site.title }} {{ "now"|date("Y") }}</p>
             <ul class="list-inline">
-                {#<li class="list-inline-item">#}
-                    {#<a class="icon icon-sm icon-secondary" href="#"><i class="icon-inner fab fa-twitter" aria-hidden="true"></i><span class="sr-only">Twitter</span></a>#}
-                {#</li>#}
-                <li class="list-inline-item">
-                    <a class="icon icon-sm icon-secondary" href="{{ site.facebook }}" target="_blank">
-                        <i class="icon-inner fab fa-facebook-f" aria-hidden="true"></i>
-                        <span class="sr-only">Facebook</span>
-                    </a>
-                </li>
+
+                {% if site.twitter is not empty %}
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="{{ site.twitter }}">
+                            <i class="icon-inner fab fa-twitter" aria-hidden="true"></i>
+                            <span class="sr-only">Twitter</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if site.linkedin is not empty %}
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="{{ site.linkedin }}">
+                            <i class="icon-inner fab fa-linkedin-in" aria-hidden="true"></i>
+                            <span class="sr-only">LinkedIn</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if site.instagram is not empty %}
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="{{ site.instagram }}">
+                            <i class="icon-inner fab fa-instagram" aria-hidden="true"></i>
+                            <span class="sr-only">Instagram</span>
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if site.facebook is not empty %}
+                    <li class="list-inline-item">
+                        <a class="icon icon-sm icon-secondary" href="{{ site.facebook }}">
+                            <i class="icon-inner fab fa-facebook-f" aria-hidden="true"></i>
+                            <span class="sr-only">Facebook</span>
+                        </a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

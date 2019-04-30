@@ -3,7 +3,15 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
             <a class="navbar-brand text-dark" href="{{ path('default') }}">
-                <span class="text-primary">Beeterr</span> PuntNL
+                {% if site.logo is not empty %}
+                    <img src="{{ site.logo }}" alt="{{ site.title }}" style="height: 20px;">
+                {% else %}
+                    {% set title = site.title|split(" ") %}
+                    <span class="text-primary">{{ title|first }}</span>
+                    {% for t in title|slice(1,10) %}
+                        <span>{{ t }} </span>
+                    {% endfor %}
+                {% endif %}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars fa-lg"></i>
