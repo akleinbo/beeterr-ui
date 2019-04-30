@@ -1,0 +1,102 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <main id="content">
+        <div class="bg-light mb-5">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-lg-9">
+                        {#                        <h1 class="display-4 mb-4">{{ page.page.parent.title }}</h1>#}
+                        <h1>{{ page.page.title }}</h1>
+                        <hr class="sep border-primary ml-0 mb-3 text-left" role="presentation">
+                        <p class="small text-left">
+                            <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
+                            <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 pl-lg-4 order-lg-2 d-none d-sm-block">
+                    <nav id="nav-comp" class="navbar navbar-expand-lg navbar-light sticky-top mb-3 pl-0" aria-label="Components navigation">
+                        <a class="collapsed btn btn-outline-dark btn-block d-lg-none mb-3 p-3" href="#collapseOne" data-toggle="collapse" data-target="#navbarComp" aria-expanded="false" aria-controls="navbarComp" aria-label="Toggle navigation">
+                            <span class="text-uppercase">Navigation<i class="fas fa-angle-down ml-4 rotate-icon"></i></span>
+                        </a>
+                        <div class="collapse navbar-collapse" id="navbarComp">
+                            <ul class="navbar-nav flex-column">
+                                {% for menu in page.page.parent.children %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                                    </li>
+                                {% endfor %}
+                                <li class="nav-item d-none d-lg-block">
+                                    <a class="nav-link" href="#">Go top &uarr;</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col-lg-9 order-lg-1">
+                    <article class="pb-2">
+                        {#                        <h1 class="text-center">{{ page.page.title }}</h1>#}
+                        {#                        <p class="small mb-5 text-center">#}
+                        {#                            <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>#}
+                        {#                            <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>#}
+                        {#                        </p>#}
+
+                        {% if page.page.images|first is empty %}
+                            {#                            <div class="text-center p-3">#}
+                            {#                                <span class="icon icon-lg icon-success">#}
+                            {#                                    <i class="icon-inner fas fa-cogs"></i>#}
+                            {#                                </span>#}
+                            {#                            </div>#}
+                        {% else %}
+                            <figure class="figure mt-2">
+                                <img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">
+                                <figcaption class="figure-caption p-2 text-center">{{ page.page.title }}</figcaption>
+                            </figure>
+                        {% endif %}
+
+                        {{ page.page.banner|raw }}
+                        {{ page.page.description|raw }}
+
+                        {% if page.tags is not empty %}
+                            <p class="small mt-5 text-center">
+                                <span class=" text-secondary">Tagged: </span>
+                                {% for tag in page.tags %}
+                                    <a href="#" class="text-dark">{{ tag }}</a>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+
+                        {% for user in page.users %}
+                            <div class="media my-5">
+                                <img class="avatar avatar-lg mr-3" src="{{ user.images|first }}" alt="{{ user.surname }}, {{ user.forename }}">
+                                <div class="media-body">
+                                    <h3 class="h5 mt-0">{{ user.surname }}, {{ user.forename }}</h3>
+                                    <p class="mb-0 text-secondary">{{ user.title }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </article>
+                    {#                    <hr class="sep border-primary">#}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}

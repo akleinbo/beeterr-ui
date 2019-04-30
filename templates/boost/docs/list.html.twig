@@ -16,6 +16,7 @@
                 <div class="row py-5">
                     <div class="col-lg-9">
                         <h1 class="display-4 mb-4">{{ page.page.title }}</h1>
+                        <hr class="sep border-primary ml-0 mb-3 text-left" role="presentation">
                         {{ page.page.banner|raw }}
                     </div>
                 </div>
@@ -26,7 +27,7 @@
                 <div class="col-lg-3 pl-lg-4 order-lg-2">
                     <nav id="nav-comp" class="navbar navbar-expand-lg navbar-light sticky-top mb-3 pl-0" aria-label="Components navigation">
                         <a class="collapsed btn btn-outline-dark btn-block d-lg-none mb-3 p-3" href="#collapseOne" data-toggle="collapse" data-target="#navbarComp" aria-expanded="false" aria-controls="navbarComp" aria-label="Toggle navigation">
-                            <span class="text-uppercase">Navigation<i class="fas fa-angle-down ml-4 rotate-icon"></i></span>
+                            <span class="text-uppercase">{{ 'Navigatie'|trans }}<i class="fas fa-angle-down ml-4 rotate-icon"></i></span>
                         </a>
                         <div class="collapse navbar-collapse" id="navbarComp">
                             <ul class="navbar-nav flex-column">
@@ -52,9 +53,17 @@
                         {% for item in page.page.children %}
                             <div class="col-12 col-md-4 pb-3">
                                 <div class="card shadow">
-                                    <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% if item.images|first is empty %}
+                                        <div class="text-center p-3">
+                                            <span class="icon icon-lg icon-success">
+                                                <i class="icon-inner fas fa-cogs"></i>
+                                            </span>
+                                        </div>
+                                    {% else %}
+                                        <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% endif %}
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ item.title }}</h5>
+                                        <h5 class="card-title" style="white-space: nowrap;">{{ item.title }}</h5>
                                         <p class="card-text">{{ item.banner|slice(0, 100)|raw }}</p>
                                         <a href="{{ item.slug }}" class="btn btn-pill btn-primary btn-sm">Lees meer</a>
                                     </div>
