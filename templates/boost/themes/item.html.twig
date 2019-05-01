@@ -15,7 +15,6 @@
             <div class="container">
                 <div class="row py-5">
                     <div class="col-lg-9">
-                        {#                        <h1 class="display-4 mb-4">{{ page.page.parent.title }}</h1>#}
                         <h1>{{ page.page.title }}</h1>
                         <hr class="sep border-primary ml-0 mb-3 text-left" role="presentation">
                     </div>
@@ -50,11 +49,6 @@
                             <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
                             <span class="text-secondary">{{ page.page.created|date('d M Y') }}</span>
                         </p>
-                        {#                        <h1 class="text-center">{{ page.page.title }}</h1>#}
-                        {#                        <p class="small mb-5 text-center">#}
-                        {#                            <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>#}
-                        {#                            <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>#}
-                        {#                        </p>#}
 
                         {% if page.page.images|first is empty %}
                             {#                            <div class="text-center p-3">#}
