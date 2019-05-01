@@ -77,7 +77,7 @@ class ContactForm extends React.Component {
             <form className="py-4" onSubmit={this.handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="inputName" className="small text-uppercase">Name <span className="text-primary">*</span></label>
-                    <input type="text" className="form-control" id="fullname" placeholder="Enter your name" name='fullname' value={this.state.fullnameValue} onChange={this.handleChange} />
+                    <input type="text" className="form-control" id="fullname" placeholder="Naam" name='fullname' value={this.state.fullnameValue} onChange={this.handleChange} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="inputEmail" className="small text-uppercase">Email <span className="text-primary">*</span></label>
@@ -85,7 +85,7 @@ class ContactForm extends React.Component {
                 </div>
                 <div className="form-group">
                     <label htmlFor="messageTetxarea" className="small text-uppercase">Message <span className="text-primary">*</span></label>
-                    <textarea className="form-control rounded" id="message" rows="9" placeholder="Enter your message" name="message" value={this.state.messageValue} onChange={this.handleChange}></textarea>
+                    <textarea className="form-control rounded" id="message" rows="9" placeholder="Bericht" name="message" value={this.state.messageValue} onChange={this.handleChange}></textarea>
                 </div>
                 <button type="submit" className="btn btn-pill btn-primary">Submit</button>
             </form>
