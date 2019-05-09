@@ -1,6 +1,12 @@
-<div class="container">
-    <div class="jumbotron">
-        {{ banner.title }}
-        {{ banner.description|raw }}
+<section class="d-flex align-items-center min-vh-70 bg-skew bg-skew-primary overflow-hidden text-white">
+    <div class="container mb-xl-5 py-5">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-10">
+                <h1 class="display-3 mb-4">{{ banner.title }}</h1>
+{#                <p class="lead mb-4 px-sm-5">Learn the fundamentals of typography, color, interface design, and user experience</p>#}
+{#                <a class="btn btn-pill btn-light btn-lg" href="#">Join now</a>#}
+                {{ banner.description|raw }}
+            </div>
+        </div>
     </div>
-</div>
+</section>
