@@ -1,16 +1,8 @@
-<!-- CTA -->
+<!-- Control To Actions -->
 <hr class="sep border-primary">
 <div class="container py-5">
     <div class="">
         <div class="text-center">
-{#            {% for item in banner.items %}#}
-{#                <h2 class="mb-4">{{ item.title }}</h2>#}
-{#                <div class="mb-4">#}
-{#                    #}{#{{ dump(item) }}#}
-{#                    <a class="btn btn-pill btn-primary" href="{{ item.CTAS[0].slug }}" role="button">{{ item.CTAS[0].title  }}</a>#}
-{#                </div>#}
-{#                <a class="link-cta" href="{{ item.CTAS[1].slug  }}">{{ item.CTAS[1].title  }}</a>#}
-{#            {% endfor %}#}
             {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
                 <a class="btn btn-pill btn-primary" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}" role="button">{{ cta.title }}</a>
             {% endfor %}
