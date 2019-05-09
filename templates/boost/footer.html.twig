@@ -8,10 +8,20 @@
             <div class="col-4 col-md-2 mb-4">
                 <h3 class="h5 mb-3">{{ page.menuNames.footerLeft }}</h3>
                 <ul class="nav flex-column">
-                    {% for menu in page.menus.footerLeft %}
+                    {% for menu in page.menus.footerLeft %}{% if menu.children is empty %}
                         <li class="mb-1">
                             <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
                         </li>
+                    {% else %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                        {% for m in menu.children %}
+                            <li class="mb-1">
+                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
                     {% endfor %}
                 </ul>
             </div>
@@ -19,9 +29,20 @@
                 <h3 class="h5 mb-3">{{ page.menuNames.footerMiddle }}</h3>
                 <ul class="nav flex-column">
                     {% for menu in page.menus.footerMiddle %}
-                        <li class="mb-1">
-                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
-                        </li>
+                        {% if menu.children is empty %}
+                            <li class="mb-1">
+                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                            </li>
+                        {% else %}
+                            <li class="mb-1">
+                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                            </li>
+                            {% for m in menu.children %}
+                                <li class="mb-1">
+                                    <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
@@ -29,9 +50,20 @@
                 <h3 class="h5 mb-3">{{ page.menuNames.footerRight }}</h3>
                 <ul class="nav flex-column">
                     {% for menu in page.menus.footerRight %}
-                        <li class="mb-1">
-                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
-                        </li>
+                        {% if menu.children is empty %}
+                            <li class="mb-1">
+                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                            </li>
+                        {% else %}
+                            <li class="mb-1">
+                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                            </li>
+                            {% for m in menu.children %}
+                                <li class="mb-1">
+                                    <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
                     {% endfor %}
                 </ul>
             </div>
