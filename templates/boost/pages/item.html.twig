@@ -14,7 +14,12 @@
         <div class="container">
             <div class="row justify-content-center my-5">
                 <div class="col-lg-9">
-                    <img src="{{ page.page.images|first }}" class="img-fluid img-thumbnail" alt="{{ page.page.title }}">
+                    {% set image = page.page.images|first %}
+                    {% if image is not empty %}
+                        <img src="{{ image }}" class="img-fluid img-thumbnail" alt="{{ page.page.title }}">
+                    {% else %}
+                        <hr class="sep border-primary">
+                    {% endif %}
                 </div>
             </div>
         </div>

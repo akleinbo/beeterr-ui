@@ -31,7 +31,7 @@
                         </a>
                         <div class="collapse navbar-collapse" id="navbarComp">
                             <ul class="navbar-nav flex-column">
-                                {% for menu in page.page.parent.children %}
+                                {% for menu in page.page.parent.children|default %}
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
                                     </li>
