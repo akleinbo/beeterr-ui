@@ -1,0 +1,108 @@
+<div class="container pt-5 pb-3">
+    <div class="row justify-content-md-between">
+        <div class="col-sm-12 col-md-4 mb-4">
+            <h3>{{ site.title }}</h3>
+            {{ site.description|raw }}
+        </div>
+        <div class="col-4 col-md-2 mb-4">
+            <h3 class="h5 mb-3">{{ page.menuNames.footerLeft }}</h3>
+            <ul class="nav flex-column">
+                {% for menu in page.menus.footerLeft %}
+                    {% if menu.children is empty %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                    {% else %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                        {% for m in menu.children %}
+                            <li class="mb-1">
+                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if site.email is defined %}
+                <p>
+                    <a href="mailto:{{ site.email }}">
+                        <span class="fa fa-envelope-open" aria-hidden="true"> </span> {{ site.email }}
+                    </a>
+                </p>
+            {% endif %}
+            {% if site.phone is defined %}
+                <p>
+                    <a href="tel:{{ site.phone }}">
+                        <span class="fa fa-phone" aria-hidden="true"> </span> {{ site.phone }}
+                    </a> <br>
+                </p>
+            {% endif %}
+        </div>
+        <div class="col-4 col-md-2 mb-4">
+            <h3 class="h5 mb-3">{{ page.menuNames.footerMiddle }}</h3>
+            <ul class="nav flex-column">
+                {% for menu in page.menus.footerMiddle %}
+                    {% if menu.children is empty %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                    {% else %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                        {% for m in menu.children %}
+                            <li class="mb-1">
+                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            {% if site.facebook is defined %}
+                <p>
+                    <a href="{{ site.facebook }}" target="_blank">
+                        <span class="fab fa-facebook" aria-hidden="true"> </span> Facebook
+                    </a>
+                </p>
+            {% endif %}
+            {% if site.twitter is defined %}
+                <p>
+                    <a href="{{ site.twitter }}" target="_blank">
+                        <span class="fab fa-twitter" aria-hidden="true"> </span> Twitter
+                    </a>
+                </p>
+            {% endif %}
+        </div>
+        <div class="col-4 col-md-2 mb-4">
+            <h3 class="h5 mb-3">{{ page.menuNames.footerRight }}</h3>
+            <ul class="nav flex-column">
+                {% for menu in page.menus.footerRight %}
+                    {% if menu.children is empty %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                    {% else %}
+                        <li class="mb-1">
+                            <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                        </li>
+                        {% for m in menu.children %}
+                            <li class="mb-1">
+                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container-fluid footer-a bg-dark">
+    <div class="row py-3">
+        <div class="col-12 text-center text-muted">
+            {% for menu in page.menus.bottomMiddle %}
+                <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<section class="container">
+    <h3 class="text-center mt-5 mb-4">{{ banner.title }}</h3>
+    <div class="row py-5">
+        {% for item in banner.items %}
+            <div class="col-lg-4">
+                <div class="card card-price shadow-lg mb-4">
+                    <div class="card-header">
+                        <h3 class="h4 font-weight-normal">{{ item.title }}</h3>
+{#                        <span class="d-block h1 my-2"><span class="h2">$</span>0</span>#}
+{#                        <span class="d-block text-muted">forever</span>#}
+                    </div>
+                    <div class="card-body">
+                        {{ item.description|raw }}
+
+{#                        <ul class="list-unstyled mb-4">#}
+{#                            <li class="py-2 text-secondary">5 downloads / month</li>#}
+{#                            <li class="py-2 text-secondary">Email support</li>#}
+{#                            <li class="py-2 text-secondary">No credit card required</li>#}
+{#                            <li class="py-2 text-secondary">Easy cancellation</li>#}
+{#                        </ul>#}
+
+{#                        <a class="btn btn-pill btn-outline-primary mb-3" href="#">Get started</a>#}
+
+                        {% for cta in item.CTAS|slice(0,1) if cta is defined %}
+                            <a class="btn btn-pill btn-primary mb-3" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}" role="button">{{ cta.title }}</a>
+                        {% endfor %}
+                        {% for cta in item.CTAS|slice(1,1) if cta is defined %}
+                            <a class="btn btn-link mb-3" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}" role="button">{{ cta.title }}</a>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

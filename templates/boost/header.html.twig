@@ -25,11 +25,11 @@
                             </li>
                         {% else %}
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="{{ path('default', {'slug':menu.slug}) }}" id="DropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="{{ path('default', {'slug':menu.slug}) }}" id="DropdownMenu_{{ menu.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ menu.title }}
 {#                                    <i class="fas fa-angle-down fa-sm ml-1"></i>#}
                                 </a>
-                                <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu">
+                                <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu_{{ menu.id }}">
                                     <a class="dropdown-item" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
                                         <strong>{{ menu.title }}</strong>
                                     </a>
