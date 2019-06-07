@@ -66,4 +66,19 @@ class ApiManager
 
         return $apiManager->curlRequest($url);
     }
+
+    /**
+     * @param ApiManager $apiManager
+     * @param            $site
+     * @param            $needle
+     * @return mixed
+     */
+    public function getSearch(ApiManager $apiManager, $site, $needle = '')
+    {
+        $url = $site['api']['api_search'];
+        $url = str_replace('_LOCALE_', $site['locale'], $url);
+        $url = str_replace('_NEEDLE_', $needle, $url);
+
+        return $apiManager->curlRequest($url);
+    }
 }
