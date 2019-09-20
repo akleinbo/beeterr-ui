@@ -25,14 +25,14 @@
                 {% endfor %}
             </ul>
             {% if site.email is defined %}
-                <p>
+                <p class="text-nowrap">
                     <a href="mailto:{{ site.email }}">
                         <span class="fa fa-envelope-open" aria-hidden="true"> </span> {{ site.email }}
                     </a>
                 </p>
             {% endif %}
             {% if site.phone is defined %}
-                <p>
+                <p class="text-nowrap">
                     <a href="tel:{{ site.phone }}">
                         <span class="fa fa-phone" aria-hidden="true"> </span> {{ site.phone }}
                     </a> <br>
@@ -97,7 +97,7 @@
         </div>
     </div>
 </div>
-<div class="container-fluid footer-a bg-dark">
+<div class="container footer-a">
     <div class="row py-3">
         <div class="col-12 text-center text-muted">
             {% for menu in page.menus.bottomMiddle %}

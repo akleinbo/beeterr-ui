@@ -12,23 +12,36 @@
 
     <div class="container body-container">
         <main id="content">
-            <div class="">
-                {% include site.template~'/breadcrumbs.html.twig' %}
-            </div>
-            <div class="">
-                {% for banner in page.banners|slice(0,1) %}
-                    {% include site.template~'/banners/'~banner.type~'.html.twig' %}
-                {% endfor %}
-            </div>
-            <div class="">
-                {% for banner in page.banners|slice(1, 3) %}
-                    {% include site.template~'/banners/'~banner.type~'.html.twig' %}
-                {% endfor %}
-            </div>
-            <div class="">
-                {% for banner in page.banners|slice(4, 8) %}
-                    {% include site.template~'/banners/'~banner.type~'.html.twig' %}
-                {% endfor %}
+{#            <div class="">#}
+{#                {% include site.template~'/breadcrumbs.html.twig' %}#}
+{#            </div>#}
+
+            {% for banner in page.banners|slice(0,1) %}
+                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+            {% endfor %}
+
+            {% for banner in page.banners|slice(1, 3) %}
+                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+            {% endfor %}
+
+            {% for banner in page.banners|slice(4, 8) %}
+                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+            {% endfor %}
+
+{#            <div class="pb-3">#}
+{#                {% for banner in page.banners|slice(0,1) %}#}
+{#                    {% include site.template~'/banners/'~banner.type~'.html.twig' %}#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#            <div class="pb-3">#}
+{#                {% for banner in page.banners|slice(1, 3) %}#}
+{#                    {% include site.template~'/banners/'~banner.type~'.html.twig' %}#}
+{#                {% endfor %}#}
+{#            </div>#}
+{#            <div class="pb-3">#}
+{#                {% for banner in page.banners|slice(4, 8) %}#}
+{#                    {% include site.template~'/banners/'~banner.type~'.html.twig' %}#}
+{#                {% endfor %}#}
             </div>
         </main>
     </div>
