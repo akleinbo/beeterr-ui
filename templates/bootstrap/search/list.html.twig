@@ -13,16 +13,28 @@
     <div class="container body-container">
         <main id="content">
             <div class="row">
-                <div class="col-12 col-md-4">
-                    <h1>search filters</h1>
+                <div class="col-12 col-md-3">
+                    <h2>{{ 'Filters'|trans }}</h1>
+                    <p>{{ 'Er zijn geen filters gevonden.'|trans }}</p>
                 </div>
-                <div class="col-12 col-md-8">
+                <div class="col-12 col-md-9">
+                    
+                    <h2>{{ 'Zoeken'|trans }}</h1>
+                    
+                    {% if search is empty %}
+                        <p>{{ 'Er zijn geen items gevonden.'|trans }}</p>                      
+                    {% else %}
+                        <p>{{ search|length }} {{ 'gevonden items'|trans }}</p>
+                    {% endif %}
+                    
                     {% for item in search %}
                         <div class="row pb-3">
                             <div class="col-4">
                                 {% set image = item.images|first %}
                                 {% if image|first is not empty %}
-                                    <img src="{{ image|first }}" class="img-fluid img-thumbnail">
+                                    <a href="{{ path('default', {'slug':item.slug}) }}">
+                                        <img src="{{ image }}" class="img-fluid img-thumbnail" style="max-height:10em;">
+                                    </a>
                                 {% endif %}
                             </div>
                             <div class="col-8">

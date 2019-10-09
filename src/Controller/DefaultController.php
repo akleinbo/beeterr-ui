@@ -49,7 +49,7 @@ class DefaultController extends AbstractController
         } else {
 
             $search = $apiManager->getSearch($apiManager, $site, $request->get('needle'));
-
+            
             $page['page']['metaTitle'] = 'Zoeken:' . $request->get('needle');
 
             return $this->render($site['template'] . '/search/list.html.twig', [
