@@ -22,6 +22,13 @@
                 </div>
             </div>
         </div>
+        {% if page.banners|length > 0 %}
+        <div class="">
+            {% for banner in page.banners|slice(0,1) %}
+                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+            {% endfor %}
+        </div>
+        {% endif %}
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 pl-lg-4 order-lg-2 d-none d-sm-block">
@@ -31,11 +38,6 @@
                         </a>
                         <div class="collapse navbar-collapse" id="navbarComp">
                             <ul class="navbar-nav flex-column">
-                                {#{% for menu in page.page.children %}#}
-                                {#<li class="nav-item">#}
-                                {#<a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>#}
-                                {#</li>#}
-                                {#{% endfor %}#}
                                 {% for menu in page.page.children %}
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
