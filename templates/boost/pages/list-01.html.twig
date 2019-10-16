@@ -55,11 +55,18 @@
                         {% for item in page.page.children %}
                             <div class="col-12 col-md-4 pb-3">
                                 <div class="card shadow">
-                                    <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% set image = item.images|first %}
+                                    {% if image %}
+                                        <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% endif %}
                                     <div class="card-body">
-                                        <h5 class="card-title">{{ item.title }}</h5>
-                                        <p class="card-text">{{ item.banner|slice(0, 100)|raw }}</p>
-                                        <a href="{{ item.slug }}" class="btn btn-pill btn-primary btn-sm">Lees meer</a>
+                                        <h5 class="card-title text-nowrap">{{ item.title }}</h5>
+                                        {% set banner = item.banner|split('.') %}
+                                        {% set banner = banner[0] %}
+                                        {% set banner = banner|striptags %}
+                                        {% set banner = banner|slice(0, 75) %}
+                                        <p class="card-text h-100">{{ banner|raw }}..</p>
+                                        <a href="{{ item.slug }}" class="btn btn-pill btn-primary btn-sm">{{ 'Lees meer'|trans }}</a>
                                     </div>
                                 </div>
                             </div>
