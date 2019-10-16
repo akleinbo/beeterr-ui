@@ -1,5 +1,26 @@
 <header class="site-header">
     <a href="#content" class="sr-only sr-only-focusable">Skip to content</a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4">
+                {% for menu in page.menus.topLeft %}
+                    <a href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-4">
+                {% for menu in page.menus.topMiddle %}
+                    <a href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-4">
+                {% for menu in page.menus.topRight %}
+                    <a href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
             <a class="navbar-brand text-dark" href="{{ path('default') }}">
@@ -18,7 +39,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
-                    {% for menu in page.menus.topRight %}
+                    {% for menu in page.menus.headerRight %}
                         {% if menu.children is empty %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>

@@ -50,18 +50,9 @@
                             <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
                             <span class="text-secondary">{{ page.page.created|date('d M Y') }}</span>
                         </p>
-                        {#                        <h1 class="text-center">{{ page.page.title }}</h1>#}
-                        {#                        <p class="small mb-5 text-center">#}
-                        {#                            <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>#}
-                        {#                            <span class="text-uppercase">{{ page.page.created|date('d M Y') }}</span>#}
-                        {#                        </p>#}
 
                         {% if page.page.images|first is empty %}
-                            {#                            <div class="text-center p-3">#}
-                            {#                                <span class="icon icon-lg icon-success">#}
-                            {#                                    <i class="icon-inner fas fa-cogs"></i>#}
-                            {#                                </span>#}
-                            {#                            </div>#}
+
                         {% else %}
                             <figure class="figure mt-2">
                                 <img src="{{ page.page.images|first }}" class="img-fluid shadow" alt="page.page.title">
@@ -91,7 +82,7 @@
                             </div>
                         {% endfor %}
                     </article>
-                    {#                    <hr class="sep border-primary">#}
+                    {# <hr class="sep border-primary"> #}
                 </div>
             </div>
         </div>
