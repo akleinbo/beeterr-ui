@@ -111,4 +111,23 @@
             </ul>
         </div>
     </div>
+    <div class="container">
+        <div class="row py-2">
+            <div class="col-12 col-md-4 text-muted">
+                {% for menu in page.menus.bottomLeft %}
+                    <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted small">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-4 text-muted text-center">
+                {% for menu in page.menus.bottomMiddle %}
+                    <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted small">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-4 text-muted text-right">
+                {% for menu in page.menus.bottomRight %}
+                    <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted small">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </footer>

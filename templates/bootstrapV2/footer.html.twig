@@ -97,8 +97,8 @@
         </div>
     </div>
 </div>
-<div class="container footer-a">
-    <div class="row py-3">
+<div class="container-fluid bg-dark text-white">
+    <div class="row py-2">
         <div class="col text-muted">
             {% for menu in page.menus.bottomLeft %}
                 <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
