@@ -19,11 +19,11 @@ class DefaultController extends AbstractController
     public function index(ApiManager $apiManager, $slug = 'home')
     {
         if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
-            return new Response('Sorry, no site found', Response::HTTP_BAD_REQUEST);
+            return new Response('Sorry, no site found.', Response::HTTP_BAD_REQUEST);
         } elseif(!$page = $apiManager->getPage($apiManager, $site, $slug)) {
-            return new Response('<h1>Sorry, no page found[1]</h1>', Response::HTTP_BAD_REQUEST);
+            return new Response('<h1>Sorry, no page found[1].</h1>', Response::HTTP_BAD_REQUEST);
         } elseif(empty($page['route'])) {
-            return new Response('<h1>Sorry, no page found[2]</h1>', Response::HTTP_NOT_FOUND);
+            return new Response('<h1>Sorry, no page found[2].</h1>', Response::HTTP_NOT_FOUND);
         } else {
 
             return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
@@ -49,10 +49,10 @@ class DefaultController extends AbstractController
         } else {
 
             $search = $apiManager->getSearch($apiManager, $site, $request->get('needle'));
-            
+
             $page['page']['metaTitle'] = 'Zoeken:' . $request->get('needle');
 
-            return $this->render($site['template'] . '/search/list.html.twig', [
+            return $this->render($site['template'] . '/pages/search-01.html.twig', [
                 'site' => $site,
                 'page' => $page,
                 'search' => $search

@@ -1,0 +1,59 @@
+<div class="container body-container pb-3">
+    <div class="row">
+        <header class="site-header">
+            <a href="#content" class="sr-only sr-only-focusable">Skip to content</a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 py-3">
+                        {% if site.logo is not empty %}
+                            <a href="{{ path('default') }}">
+                                <img src="{{ site.logo }}" alt="{{ site.title }}">
+                            </a>
+                        {% else %}
+                            <a href="{{ path('default') }}">
+                                <h1>{{ site.title }}</h1>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
+        <a class="navbar-brand" href="{{ path('default') }}">
+            <span class="fa fa-home"> </span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% for menu in page.menus.topLeft %}
+                    {% if menu.children is empty %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="{{ path('default', {'slug':menu.slug}) }}" id="DropdownMenu_{{ menu.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ menu.title }}
+                            </a>
+                            <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu_{{ menu.id }}">
+                                <a class="dropdown-item" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                                    <strong>{{ menu.title }}</strong>
+                                </a>
+                                {% for m in menu.children %}
+                                    <a class="dropdown-item" href="{{ path('default', {'slug':m.slug}) }}">{{ m.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <form class="form-inline my-2 my-lg-0" action="{{ path('default_search') }}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="needle" value="{{ app.request.get('needle') }}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+</div>

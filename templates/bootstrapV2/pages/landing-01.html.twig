@@ -10,11 +10,8 @@
     <!-- header -->
     {% include site.template~'/header.html.twig' %}
 
-    <div class="container body-container">
+    <div class="container">
         <main id="content">
-{#            <div class="">#}
-{#                {% include site.template~'/breadcrumbs.html.twig' %}#}
-{#            </div>#}
 
             {% for banner in page.banners|slice(0,1) %}
                 {% include site.template~'/banners/'~banner.type~'.html.twig' %}

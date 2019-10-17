@@ -1,0 +1,23 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb bg-light">
+        <li class="breadcrumb-item">
+            <a href="{{ path('default') }}">
+                <span class="fa fa-home" aria-hidden="false"></span>
+            </a>
+        </li>
+        {% for breadCrumb in page.breadCrumbs %}
+            {% if breadCrumb.slug is not defined %}
+                <li class="breadcrumb-item{% if loop.last %} active{% endif %}">{{ breadCrumb.title|raw }}</li>
+            {% else %}
+                <li class="breadcrumb-item{% if loop.last %} active{% endif %}" {% if loop.last %} aria-current="page"{% endif %}>
+
+                    {% if loop.last %}
+                        {{ breadCrumb.title|raw }}
+                    {% else %}
+                        <a href="{{ path('default', {'slug':breadCrumb.slug}) }}">{{ breadCrumb.title|raw }}</a>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ol>
+</nav>
