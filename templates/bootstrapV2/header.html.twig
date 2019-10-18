@@ -1,16 +1,36 @@
 <div class="container body-container pb-3">
     <div class="row">
+        <div class="col-12 col-md-4 text-left">
+            {% for menu in page.menus.topLeft %}
+                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                {% if loop.last %}{% else %} | {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-12 col-md-4 text-center">
+            {% for menu in page.menus.topMiddle %}
+                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                {% if loop.last %}{% else %} | {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-12 col-md-4 text-right">
+            {% for menu in page.menus.topRight %}
+                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                {% if loop.last %}{% else %} | {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
         <header class="site-header">
             <a href="#content" class="sr-only sr-only-focusable">Skip to content</a>
             <div class="container">
                 <div class="row">
                     <div class="col-12 py-3">
                         {% if site.logo is not empty %}
-                            <a href="{{ path('default') }}">
+                            <a href="/">
                                 <img src="{{ site.logo }}" alt="{{ site.title }}">
                             </a>
                         {% else %}
-                            <a href="{{ path('default') }}">
+                            <a href="/">
                                 <h1>{{ site.title }}</h1>
                             </a>
                         {% endif %}
@@ -20,30 +40,47 @@
         </header>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded">
-        <a class="navbar-brand" href="{{ path('default') }}">
+        <a class="navbar-brand" href="/">
             <span class="fa fa-home"> </span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"> </span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                {% for menu in page.menus.topLeft %}
+                {% for menu in page.menus.headerLeft %}
                     {% if menu.children is empty %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                            <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                                {{ menu.title }}
+                            </a>
                         </li>
                     {% else %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ path('default', {'slug':menu.slug}) }}" id="DropdownMenu_{{ menu.id }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle"
+                               href="{{ menu.slug }}"
+                               id="DropdownMenu_{{ menu.id }}"
+                               data-toggle="dropdown"
+                               aria-haspopup="true"
+                               aria-expanded="false">
                                 {{ menu.title }}
                             </a>
                             <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu_{{ menu.id }}">
-                                <a class="dropdown-item" href="{{ path('default', {'slug':menu.slug}) }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                                <a class="dropdown-item"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                >
                                     <strong>{{ menu.title }}</strong>
                                 </a>
                                 {% for m in menu.children %}
-                                    <a class="dropdown-item" href="{{ path('default', {'slug':m.slug}) }}">{{ m.title }}</a>
+                                    <a class="dropdown-item" href="{{ m.slug }}">{{ m.title }}</a>
                                 {% endfor %}
                             </div>
                         </li>
@@ -51,8 +88,14 @@
                 {% endfor %}
             </ul>
             <form class="form-inline my-2 my-lg-0" action="{{ path('default_search') }}">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="needle" value="{{ app.request.get('needle') }}">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2"
+                       type="search"
+                       placeholder="{{ 'Search'|trans }}"
+                       aria-label="Search"
+                       name="needle"
+                       value="{{ app.request.get('needle') }}"
+                >
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{{ 'Search'|trans }}</button>
             </form>
         </div>
     </nav>

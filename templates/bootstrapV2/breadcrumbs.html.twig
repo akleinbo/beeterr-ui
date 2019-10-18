@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb bg-light">
         <li class="breadcrumb-item">
-            <a href="{{ path('default') }}">
+            <a href="/">
                 <span class="fa fa-home" aria-hidden="false"></span>
             </a>
         </li>
@@ -14,7 +14,7 @@
                     {% if loop.last %}
                         {{ breadCrumb.title|raw }}
                     {% else %}
-                        <a href="{{ path('default', {'slug':breadCrumb.slug}) }}">{{ breadCrumb.title|raw }}</a>
+                        <a href="{{ breadCrumb.slug }}">{{ breadCrumb.title|raw }}</a>
                     {% endif %}
                 </li>
             {% endif %}

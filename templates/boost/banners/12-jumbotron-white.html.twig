@@ -2,7 +2,6 @@
     <div class="row justify-content-lg-center py-8">
         <div class="col-lg-9 text-center py-5 py-lg-5">
             <h1 class="display-4 mb-4">{{ banner.title }}</h1>
-{#            <p class="lead mb-4">A set of pages made to start your website quickly.</p>#}
             {{ banner.description|raw }}
             {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
                 <a class="btn btn-pill btn-primary" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}" role="button">{{ cta.title }}</a>

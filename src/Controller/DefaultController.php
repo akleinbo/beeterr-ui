@@ -10,6 +10,40 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
+
+    /**
+     * @param ApiManager $apiManager
+     * @return Response
+     * @Route("/robots.{_format}", name="robots", requirements={"_format" = "txt"})
+     */
+    public function robotsAction(ApiManager $apiManager)
+    {
+        if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
+            return new Response('Sorry, no site found.', Response::HTTP_BAD_REQUEST);
+        } else {
+            return $this->render('/robots.html.twig', array());
+        }
+    }
+
+    /**
+     * @param ApiManager $apiManager
+     * @return Response
+     * @Route("/sitemap.{_format}", name="sitemap", requirements={"_format" = "xml"})
+     */
+    public function sitemap(ApiManager $apiManager)
+    {
+        if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
+            return new Response('Sorry, no site found.', Response::HTTP_BAD_REQUEST);
+        } else {
+
+            $pages = $apiManager->getPages($apiManager, $site);
+
+            return $this->render('sitemap.xml.twig', array(
+                'pages' => $pages
+            ));
+        }
+    }
+
     /**
      * @param ApiManager $apiManager
      * @param string     $slug

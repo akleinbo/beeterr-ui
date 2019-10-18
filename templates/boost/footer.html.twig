@@ -72,7 +72,6 @@
         <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-center mt-4">
             <p class="small text-muted">&copy; {{ site.title }} {{ "now"|date("Y") }}</p>
             <ul class="list-inline">
-
                 {% if site.twitter is not empty %}
                     <li class="list-inline-item">
                         <a class="icon icon-sm icon-secondary" href="{{ site.twitter }}" target="_blank">
@@ -81,7 +80,6 @@
                         </a>
                     </li>
                 {% endif %}
-
                 {% if site.linkedin is not empty %}
                     <li class="list-inline-item">
                         <a class="icon icon-sm icon-secondary" href="{{ site.linkedin }}" target="_blank">
@@ -90,7 +88,6 @@
                         </a>
                     </li>
                 {% endif %}
-
                 {% if site.instagram is not empty %}
                     <li class="list-inline-item">
                         <a class="icon icon-sm icon-secondary" href="{{ site.instagram }}" target="_blank">
@@ -99,7 +96,6 @@
                         </a>
                     </li>
                 {% endif %}
-
                 {% if site.facebook is not empty %}
                     <li class="list-inline-item">
                         <a class="icon icon-sm icon-secondary" href="{{ site.facebook }}" target="_blank">
@@ -115,17 +111,23 @@
         <div class="row py-2">
             <div class="col-12 col-md-4 text-muted">
                 {% for menu in page.menus.bottomLeft %}
-                    <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted small">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted small">
+                        {{ menu.title }}
+                    </a>{% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
             <div class="col-12 col-md-4 text-muted text-center">
                 {% for menu in page.menus.bottomMiddle %}
-                    <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted small">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted small">
+                        {{ menu.title }}
+                    </a>{% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
             <div class="col-12 col-md-4 text-muted text-right">
                 {% for menu in page.menus.bottomRight %}
-                    <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted small">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted small">
+                        {{ menu.title }}
+                    </a>{% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
         </div>

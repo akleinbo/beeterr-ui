@@ -47,7 +47,7 @@ class ApiManager
      */
     public function getPages(ApiManager $apiManager, $site)
     {
-        $url = $site['api_pages'];
+        $url = $site['api']['api_pages'];
         $url = str_replace('_LOCALE_', $site['locale'], $url);
 
         return $apiManager->curlRequest($url);

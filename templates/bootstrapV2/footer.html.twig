@@ -18,7 +18,10 @@
                         </li>
                         {% for m in menu.children %}
                             <li class="mb-1">
-                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}">
+                                    <i class="fa fa-level-up-alt fa-rotate-90"></i>
+                                    {{ m.title }}
+                                </a>
                             </li>
                         {% endfor %}
                     {% endif %}
@@ -53,7 +56,9 @@
                         </li>
                         {% for m in menu.children %}
                             <li class="mb-1">
-                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}">
+                                    <i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}
+                                </a>
                             </li>
                         {% endfor %}
                     {% endif %}
@@ -73,6 +78,20 @@
                     </a>
                 </p>
             {% endif %}
+            {% if site.linkedin is defined %}
+                <p>
+                    <a href="{{ site.linkedin }}" target="_blank">
+                        <span class="fab fa-linkedin" aria-hidden="true"> </span> linkedin
+                    </a>
+                </p>
+            {% endif %}
+            {% if site.instagram is defined %}
+                <p>
+                    <a href="{{ site.linkedin }}" target="_blank">
+                        <span class="fab fa-instagram" aria-hidden="true"> </span> Instagram
+                    </a>
+                </p>
+            {% endif %}
         </div>
         <div class="col-4 col-md-2 mb-4">
             <h3 class="h5 mb-3">{{ page.menuNames.footerRight }}</h3>
@@ -88,7 +107,10 @@
                         </li>
                         {% for m in menu.children %}
                             <li class="mb-1">
-                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}"><i class="fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}</a>
+                                <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}">
+                                    <i class="fa fa-level-up-alt fa-rotate-90"></i>
+                                    {{ m.title }}
+                                </a>
                             </li>
                         {% endfor %}
                     {% endif %}
@@ -99,19 +121,22 @@
 </div>
 <div class="container-fluid bg-dark text-white">
     <div class="row py-2">
-        <div class="col text-muted">
+        <div class="col-12 col-md-4 text-muted text-left">
             {% for menu in page.menus.bottomLeft %}
-                <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                {% if loop.last %}{% else %} | {% endif %}
             {% endfor %}
         </div>
-        <div class="col text-muted text-center">
+        <div class="col-12 col-md-4 text-muted text-center">
             {% for menu in page.menus.bottomMiddle %}
-                <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                {% if loop.last %}{% else %} | {% endif %}
             {% endfor %}
         </div>
-        <div class="col text-muted text-right">
+        <div class="col-12 col-md-4 text-muted text-right">
             {% for menu in page.menus.bottomRight %}
-                <a href="{{ path('default', {'slug':menu.slug}) }}" class="text-muted">{{ menu.title }}</a>{% if loop.last %}{% else %} | {% endif %}
+                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                {% if loop.last %}{% else %} | {% endif %}
             {% endfor %}
         </div>
     </div>

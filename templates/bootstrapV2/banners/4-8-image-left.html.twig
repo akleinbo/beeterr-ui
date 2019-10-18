@@ -7,7 +7,7 @@
             <h2>{{ banner.title }}</h2>
             {{ banner.description|raw }}
             {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
-                <a class="link-cta" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}">{{ cta.title }}</a>
+                <a class="link-cta" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}">{{ cta.title }} »</a>
             {% endfor %}
         </div>
     </div>
