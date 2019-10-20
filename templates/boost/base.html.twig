@@ -14,6 +14,12 @@
         <link rel="stylesheet" href="{{ asset('templates/boost/css/theme.min.css') }}">
     {% endblock %}
 
+    {% block favicons %}
+        {% if site.favicon is not empty %}
+            <link rel="icon" href="{{ site.favicon }}" sizes="any" />
+        {% endif %}
+    {% endblock %}
+
     {% block headerJavascripts %}{% endblock %}
 
     {% block headerAnalyticsCode %}
