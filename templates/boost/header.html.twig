@@ -1,24 +1,32 @@
-<header class="site-header">
-    <a href="#content" class="sr-only sr-only-focusable">Skip to content</a>
+<div class="container-fluid bg-light">
     <div class="container">
-        <div class="row">
-            <div class="col-12 col-md-4">
+        <div class="row text-muted small">
+            <div class="col-12 col-md-4 text-left">
                 {% for menu in page.menus.topLeft %}
-                    <a href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                <a class="" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                    {{ menu.title }}
+                    </a>{% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 text-center">
                 {% for menu in page.menus.topMiddle %}
-                    <a href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                <a class="" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                    {{ menu.title }}
+                    </a>{% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4 text-right">
                 {% for menu in page.menus.topRight %}
-                    <a href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
+                <a class="" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                    {{ menu.title }}
+                    </a>{% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
         </div>
     </div>
+</div>
+<header class="site-header">
+    <a href="#content" class="sr-only sr-only-focusable">Skip to content</a>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light py-3" aria-label="Main navigation">
             <a class="navbar-brand text-dark" href="/">
