@@ -36,7 +36,6 @@ class ApiManager
      */
     public function getSite($url)
     {
-        # dd($url);
         return $this->curlRequest($url);
     }
 
