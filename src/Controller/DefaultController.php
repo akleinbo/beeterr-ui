@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DefaultController extends AbstractController
 {
@@ -45,12 +46,17 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @param ApiManager $apiManager
-     * @param string     $slug
+     * @param ApiManager          $apiManager
+     * @param TranslatorInterface $translator
+     * @param Request             $request
+     * @param string              $slug
      * @return Response
-     * @Route("/{slug}", name="default")
+     * @Route("/{slug}",
+     *     name="default",
+     *     requirements={"slug"="[^+]+"}
+     * )
      */
-    public function index(ApiManager $apiManager, $slug = 'home')
+    public function index(ApiManager $apiManager, TranslatorInterface $translator, Request $request, $slug = 'home')
     {
         if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
             return new Response('Sorry, no site found.', Response::HTTP_BAD_REQUEST);
@@ -58,29 +64,7 @@ class DefaultController extends AbstractController
             return new Response('<h1>Sorry, no page found[1].</h1>', Response::HTTP_BAD_REQUEST);
         } elseif(empty($page['route'])) {
             return new Response('<h1>Sorry, no page found[2].</h1>', Response::HTTP_NOT_FOUND);
-        } else {
-
-            return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
-                'site' => $site,
-                'page' => $page
-            ]);
-        }
-    }
-
-    /**
-     * @param ApiManager $apiManager
-     * @param Request    $request
-     * @param            $slug
-     * @return Response
-     * @Route("/search/a/b/c", name="default_search")
-     */
-    public function search(ApiManager $apiManager, Request $request, $slug = 'search')
-    {
-        if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
-            return new Response('Sorry, no site found', Response::HTTP_BAD_REQUEST);
-        } elseif(!$page = $apiManager->getPage($apiManager, $site, $slug)) {
-            return new Response('<h1>Sorry, no page found[1]</h1>', Response::HTTP_BAD_REQUEST);
-        } else {
+        } elseif($slug == 'search') {
 
             $search = $apiManager->getSearch($apiManager, $site, $request->get('needle'));
 
@@ -91,8 +75,42 @@ class DefaultController extends AbstractController
                 'page' => $page,
                 'search' => $search
             ]);
+
+        } else {
+
+            return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
+                'site' => $site,
+                'page' => $page
+            ]);
         }
     }
+
+//    /**
+//     * @param ApiManager $apiManager
+//     * @param Request    $request
+//     * @param            $slug
+//     * @return Response
+//     * @Route("/search", name="default_search")
+//     */
+//    public function search(ApiManager $apiManager, Request $request, $slug = 'search')
+//    {
+//        if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
+//            return new Response('Sorry, no site found', Response::HTTP_BAD_REQUEST);
+//        } elseif(!$page = $apiManager->getPage($apiManager, $site, $slug)) {
+//            return new Response('<h1>Sorry, no page found[1]</h1>', Response::HTTP_BAD_REQUEST);
+//        } else {
+//
+//            $search = $apiManager->getSearch($apiManager, $site, $request->get('needle'));
+//
+//            $page['page']['metaTitle'] = 'Zoeken:' . $request->get('needle');
+//
+//            return $this->render($site['template'] . '/pages/search-01.html.twig', [
+//                'site' => $site,
+//                'page' => $page,
+//                'search' => $search
+//            ]);
+//        }
+//    }
 
     /**
      * @param ApiManager $apiManager

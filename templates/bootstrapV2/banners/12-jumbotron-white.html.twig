@@ -1,5 +1,5 @@
 <div>
-    <div class="jumbotron text-dark" style="background-image: url('{{ banner.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
+    <div class="jumbotron bg-light text-dark" style="background-image: url('{{ banner.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
         <h1>{{ banner.title }}</h1>
         {{ banner.description|raw }}
         {% for cta in banner.CTAS|slice(0,1) if cta is defined %}

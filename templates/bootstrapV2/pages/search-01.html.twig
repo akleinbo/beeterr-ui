@@ -10,7 +10,7 @@
     <!-- header -->
     {% include site.template~'/header.html.twig' %}
 
-    <div class="container body-container">
+    <div class="container bg-white pb-3">
         <main id="content">
             <div class="row">
                 <div class="col-12 col-md-3">
@@ -41,8 +41,17 @@
                                     </a>
                                 </p>
                                 <p class="text-muted">
-                                    {{ item.banner|striptags }}
-                                    {{ item.description|striptags }}
+                                    {% set banner = item.banner|split('.') %}
+                                    {{ banner|first|striptags }}
+
+                                    {% set description = item.description|split('.') %}
+                                    {{ description|first|striptags }}
+                                <p>
+                                    <a href="{{ path('default', {'slug':item.slug}) }}">
+                                        <span class="fa fa-arrow-alt-circle-right"></span>
+                                        {{ 'Lees meer'|trans }}
+                                    </a>
+                                </p>
                                 </p>
                             </div>
                         </div>

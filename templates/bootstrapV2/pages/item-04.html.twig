@@ -11,10 +11,10 @@
     {% include site.template~'/header.html.twig' %}
 
     <!-- breadcrumbs -->
-    <div class="container">
+    <div class="container bg-white pb-3">
         {% include site.template~'/breadcrumbs.html.twig' %}
     </div>
-    <div class="container">
+    <div class="container bg-white pb-3">
         <div class="row">
             <div class="col-12 col-md-6">
                 <h1>{{ page.page.title }}</h1>
@@ -26,30 +26,6 @@
             </div>
         </div>
     </div>
-
-{#    <div class="container">#}
-{#        <main id="content">#}
-{#            <div class="jumbotron"#}
-{#                 style="background-image: url('{{ page.page.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">#}
-{#                <h1>{{ page.page.title }}</h1>#}
-{#                {{ page.page.banner|raw }}#}
-{#            </div>#}
-{#            <div class="row">#}
-{#                <div class="col-12 col-md-9">#}
-{#                    {{ page.page.description|raw }}#}
-{#                </div>#}
-{#                <div class="col-12 col-md-3">#}
-{#                    <ul class="navbar-nav flex-column">#}
-{#                        {% for menu in page.page.parent.children|default %}#}
-{#                            <li class="nav-item">#}
-{#                                <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>#}
-{#                            </li>#}
-{#                        {% endfor %}#}
-{#                    </ul>#}
-{#                </div>#}
-{#            </div>#}
-{#        </main>#}
-{#    </div>#}
 
     <!-- footer -->
     {% include site.template~'/footer.html.twig' %}

@@ -1,0 +1,20 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <div class="container bg-white">
+        <div class="row">
+            <div class="col">
+                <p>{{ 'Deze website is tijdelijk niet beschikbaar. Probeer het later nog eens.'|trans }}</p>
+                <p>{{ 'Excuses voor het ongemak.'|trans }}</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

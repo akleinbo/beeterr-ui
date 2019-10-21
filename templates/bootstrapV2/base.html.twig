@@ -14,13 +14,19 @@
 
     {% block headerJavascripts %}{% endblock %}
 
+    {% block favicons %}
+        {% if site.favicon is not empty %}
+            <link rel="icon" href="{{ site.favicon }}" sizes="any" />
+        {% endif %}
+    {% endblock %}
+
     {% block headerAnalyticsCode %}
         {{ site.headerCode|raw }}
     {% endblock %}
 
     <title>{% block title %}{% endblock %}</title>
 </head>
-<body>
+<body class="bg-light">
 
 {% block body %}{% endblock %}
 
