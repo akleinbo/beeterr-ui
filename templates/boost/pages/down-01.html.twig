@@ -1,0 +1,35 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <main id="content">
+        <div class="">
+            <section class="d-flex align-items-center min-vh-70 bg-skew bg-skew-primary overflow-hidden text-white">
+                <div class="container mb-xl-5 py-5">
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-10">
+                            <h1 class="display-3 mb-4">{{ page.page.title }}</h1>
+                            {{ page.page.banner|raw }}
+                            {{ page.page.description|raw }}
+{#                            {% for cta in banner.CTAS|slice(0,1) if cta is defined %}#}
+{#                                <a class="btn btn-pill btn-light btn-lg mb-5" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}" role="button">{{ cta.title }}</a>#}
+{#                            {% endfor %}#}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}
