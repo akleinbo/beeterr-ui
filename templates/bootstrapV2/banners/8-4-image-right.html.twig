@@ -1,6 +1,6 @@
 <section class="pb-3">
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 pb-3">
             <h2>{{ banner.title }}</h2>
             {{ banner.description|raw }}
             {% for cta in banner.CTAS|slice(0,1) if cta is defined %}

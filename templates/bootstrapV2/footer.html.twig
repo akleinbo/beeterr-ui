@@ -1,10 +1,10 @@
 <div class="container pt-5 pb-3">
     <div class="row justify-content-md-between">
-        <div class="col-sm-12 col-md-4 mb-4">
+        <div class="col-12 col-md-4 mb-4">
             <h3>{{ site.title }}</h3>
             {{ site.description|raw }}
         </div>
-        <div class="col-4 col-md-2 mb-4">
+        <div class="col-6 col-md-2 mb-4">
             <h3 class="h5 mb-3">{{ page.menuNames.footerLeft }}</h3>
             <ul class="nav flex-column">
                 {% for menu in page.menus.footerLeft %}
@@ -42,7 +42,7 @@
                 </p>
             {% endif %}
         </div>
-        <div class="col-4 col-md-2 mb-4">
+        <div class="col-6 col-md-2 mb-4">
             <h3 class="h5 mb-3">{{ page.menuNames.footerMiddle }}</h3>
             <ul class="nav flex-column">
                 {% for menu in page.menus.footerMiddle %}
@@ -93,7 +93,7 @@
                 </p>
             {% endif %}
         </div>
-        <div class="col-4 col-md-2 mb-4">
+        <div class="col-12 col-md-2 mb-4">
             <h3 class="h5 mb-3">{{ page.menuNames.footerRight }}</h3>
             <ul class="nav flex-column">
                 {% for menu in page.menus.footerRight %}
