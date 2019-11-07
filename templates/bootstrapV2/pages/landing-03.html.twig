@@ -7,7 +7,7 @@
 
 {% block body %}
 
-    <div class="containerstyling-landing-03 bg-white py-3">
+    <div class="containerstyling-landing-03 bg-white pb-3">
         <main id="content">
             {% for banner in page.banners|slice(0,1) %}
                 {% include site.template~'/banners/'~banner.type~'.html.twig' %}

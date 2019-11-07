@@ -11,19 +11,34 @@
     {% include site.template~'/header.html.twig' %}
 
     <!-- breadcrumbs -->
-    <div class="container styling-breadcrumbs bg-white py-3">
+    <div class="container styling-breadcrumbs bg-white pb-3">
         {% include site.template~'/breadcrumbs.html.twig' %}
     </div>
-    <!-- item -->
-    <div class="container styling-item-01 bg-white py-3">
+    <!-- item-01 -->
+    <div class="container styling-item-01 bg-white pb-3">
         <main id="content">
-            <div class="jumbotron bg-light text-dark">
-                <h1>{{ page.page.title }}</h1>
-                {{ page.page.banner|raw }}
-            </div>
             <div class="row">
-                <div class="col-12">
-                    {{ page.page.description|raw }}
+                <div class="col-12 col-sm-3 pb-3">
+                    <div class="list-group">
+                        {% for menu in page.page.parent.children %}
+                            <a class="list-group-item list-group-item-action{% if app.request.get('slug') == menu.slug %} active{% endif %}"
+                               href="{{ menu.slug }}"
+                               target="{{ menu.target }}"
+                               rel="{{ menu.rel }}"
+                            >{{ menu.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-sm-9 pb-3">
+                    <div class="jumbotron bg-light text-dark">
+                        <h1>{{ page.page.title }}</h1>
+                        {{ page.page.banner|raw }}
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            {{ page.page.description|raw }}
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
