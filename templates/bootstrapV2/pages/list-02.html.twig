@@ -1,0 +1,62 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <!-- breadcrumbs -->
+    <div class="container styling-breadcrumbs bg-white pb-3">
+        {% include site.template~'/breadcrumbs.html.twig' %}
+    </div>
+    <!-- list-01 -->
+    <div class="container styling-list-01 bg-white pb-3">
+        <main id="content">
+            <div class="row">
+                <div class="col-12 col-md-3 pb-3">
+                    <div class="list-group">
+                        {% for menu in page.page.children %}
+                            <a class="list-group-item list-group-item-action"
+                               href="{{ menu.slug }}"
+                               target="{{ menu.target }}"
+                               rel="{{ menu.rel }}"
+                            >{{ menu.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-md-9 pb-3">
+                    <div class="row">
+                        {% for item in page.page.children %}
+                            <div class="col-12 col-md-4 pb-3">
+                                <div class="card shadow">
+                                    {% set image = item.images|first %}
+                                    {% if image %}
+                                        <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                    {% endif %}
+                                    <div class="card-body">
+                                        <h5 class="card-title text-nowrap">{{ item.title }}</h5>
+                                        {% set banner = item.banner|split('.') %}
+                                        {% set banner = banner[0] %}
+                                        {% set banner = banner|striptags %}
+                                        {% set banner = banner|slice(0, 75) %}
+                                        <p class="card-text h-100">{{ banner|raw }}..</p>
+                                        <a href="{{ item.slug }}" class="btn btn-pill btn-primary btn-sm">{{ 'Lees meer'|trans }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}
