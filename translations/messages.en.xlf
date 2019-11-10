@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="OJ5o5BP" resname="Kies of probeer GRATIS.">
+        <source>Kies of probeer GRATIS.</source>
+        <target>Try for Free</target>
+      </trans-unit>
+      <trans-unit id="JEi4Eth" resname="Navigatie">
+        <source>Navigatie</source>
+        <target>Navigatie</target>
+      </trans-unit>
+      <trans-unit id="tyuCfT4" resname="Lees meer">
+        <source>Lees meer</source>
+        <target>Read more</target>
+      </trans-unit>
+      <trans-unit id="VG67jrm" resname="Filters">
+        <source>Filters</source>
+        <target>Filters</target>
+      </trans-unit>
+      <trans-unit id="OsKwTX6" resname="Er zijn geen filters gevonden.">
+        <source>Er zijn geen filters gevonden.</source>
+        <target>No filter found</target>
+      </trans-unit>
+      <trans-unit id="XTOprDC" resname="Zoeken">
+        <source>Zoeken</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="KWlOzAZ" resname="Er zijn geen items gevonden.">
+        <source>Er zijn geen items gevonden.</source>
+        <target>No items found.</target>
+      </trans-unit>
+      <trans-unit id="oUvxQ4v" resname="gevonden items">
+        <source>gevonden items</source>
+        <target>found items</target>
+      </trans-unit>
+      <trans-unit id="hhtL_Hq" resname="Gepubliceerd op">
+        <source>Gepubliceerd op</source>
+        <target>Published</target>
+      </trans-unit>
+      <trans-unit id="ScJmuqq" resname="Search">
+        <source>Search</source>
+        <target>Search</target>
+      </trans-unit>
+      <trans-unit id="CA.C8mi" resname="Deze website is tijdelijk niet beschikbaar. Probeer het later nog eens.">
+        <source>Deze website is tijdelijk niet beschikbaar. Probeer het later nog eens.</source>
+        <target>This website is currently not available. Please come back later.</target>
+      </trans-unit>
+      <trans-unit id="NTES1cC" resname="Excuses voor het ongemak.">
+        <source>Excuses voor het ongemak.</source>
+        <target>Sorry for the inconvenience.</target>
+      </trans-unit>
+      <trans-unit id="3NHVIj9" resname="Name">
+        <source>Name</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="3qJbDV5" resname="Forename">
+        <source>Forename</source>
+        <target>Forename</target>
+      </trans-unit>
+      <trans-unit id="ZVwy_4R" resname="surname">
+        <source>surname</source>
+        <target>Surname</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="9vRoj.I" resname="Send">
+        <source>Send</source>
+        <target>Send</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

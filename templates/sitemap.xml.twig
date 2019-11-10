@@ -2,7 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     {% for page in pages %}
         <url>
-            <loc>{{ url('default', {'slug':page.slug}) }}</loc>
+            <loc>
+                {{ app.request.schemeAndHttpHost }}{{ page.slug }}
+            </loc>
             <lastmod>{{ page.modified|date('Y-m-d') }}</lastmod>
         </url>
     {% endfor %}

@@ -1,0 +1,88 @@
+{% extends site.template~'/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include site.template~'/header.html.twig' %}
+
+    <!-- breadcrumbs -->
+    <div class="container styling-breadcrumbs bg-white pb-3">
+        {% include site.template~'/breadcrumbs.html.twig' %}
+    </div>
+    <!-- list-01 -->
+    <div class="container styling-list-01 bg-white pb-3">
+        <main id="content">
+            <div class="row">
+                <div class="col-12 col-sm-3">
+                    <div class="list-group">
+                        {% for menu in page.menus.bodyLeft %}
+                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                               href="{{ menu.slug }}"
+                               target="{{ menu.target }}"
+                               rel="{{ menu.rel }}"
+                            >{{ menu.title }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-12 col-sm-9">
+                    <h1>{{ page.page.title }}</h1>
+                    {{ page.page.banner|raw }}
+                    <form action="">
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-2 form-control-label">{{ 'Name'|trans }}</label>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text"
+                                           id="forename"
+                                           name="forename"
+                                           required="required"
+                                           placeholder="{{ 'Forename'|trans }}"
+                                           class="form-control">
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="input-group">
+                                    <input type="text"
+                                           id="surname"
+                                           name="surname"
+                                           required="required"
+                                           placeholder="{{ 'surname'|trans }}"
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-form-label col-sm-2 required" for="email">{{ 'Email'|trans }}</label>
+                            <div class="col-sm-10">
+                                <input type="email"
+                                       id="email"
+                                       name="email"
+                                       required="required"
+                                       placeholder="{{ 'Email'|trans }}"
+                                       class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <button type="submit"
+                                        id="submit"
+                                        name="submit"
+                                        class="btn btn-primary btn"
+                                >{{ 'Send'|trans }}</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- footer -->
+    {% include site.template~'/footer.html.twig' %}
+
+{% endblock %}

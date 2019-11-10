@@ -20,10 +20,11 @@ class DefaultController extends AbstractController
      *     requirements={"_format" = "txt"}
      *     )
      */
-    public function robotsAction(ApiManager $apiManager)
-    {
+    public function robotsAction(
+        ApiManager $apiManager
+    ) {
         if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
-            return new Response('Sorry, no site found[1]', Response::HTTP_BAD_REQUEST);
+            return new Response('Sorry, no site found.', Response::HTTP_BAD_REQUEST);
         } else {
             return $this->render('/robots.html.twig', array());
         }
@@ -37,14 +38,19 @@ class DefaultController extends AbstractController
      *     requirements={"_format" = "xml"}
      *     )
      */
-    public function sitemap(ApiManager $apiManager)
-    {
+    public function siteMap(
+        ApiManager $apiManager
+    ) {
+
         if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
             return new Response('Sorry, no site found.', Response::HTTP_BAD_REQUEST);
         } else {
+
+            # pages
             $pages = $apiManager->getPages($apiManager, $site);
 
             return $this->render('sitemap.xml.twig', array(
+                'site' => $site,
                 'pages' => $pages
             ));
         }
@@ -55,11 +61,17 @@ class DefaultController extends AbstractController
      * @param            $siteId
      * @param string     $slug
      * @return Response
-     * @Route("/example/{siteId}/{slug}",
-     *     name="example")
+     * @Route("/example/{_locale}/{slug}",
+     *     name="example",
+     *     defaults={"_locale"="nl"},
+     *     requirements={"slug"="[^+]+", "_locale"="nl|en"}
+     * )
      */
-    public function example(ApiManager $apiManager, $siteId, $slug = 'home')
-    {
+    public function example(
+        ApiManager $apiManager,
+        $siteId,
+        $slug = 'home'
+    ) {
         if (!$site = $apiManager->getSite($this->getParameter('api_end_point_example') . $siteId)) {
             return new Response('Sorry, no site found[1]', Response::HTTP_BAD_REQUEST);
         } elseif(!$page = $apiManager->getPage($apiManager, $site, $slug)) {
@@ -78,18 +90,25 @@ class DefaultController extends AbstractController
      * @param ApiManager          $apiManager
      * @param TranslatorInterface $translator
      * @param Request             $request
+     * @param                     $_locale
      * @param string              $slug
      * @return Response
-     * @Route("/{slug}",
+     * @Route("/{_locale}/{slug}",
      *     name="default",
-     *     requirements={"slug"="[^+]+"}
+     *     defaults={"_locale"="nl"},
+     *     requirements={"slug"="[^+]+", "_locale"="nl|en"}
      * )
      */
-    public function index(ApiManager $apiManager, TranslatorInterface $translator, Request $request, $slug = 'home')
-    {
+    public function index(
+        ApiManager $apiManager,
+        TranslatorInterface $translator,
+        Request $request,
+        $_locale,
+        $slug = 'home'
+    ) {
         if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
             return new Response('Sorry, no site found[1]', Response::HTTP_BAD_REQUEST);
-        } elseif(!$page = $apiManager->getPage($apiManager, $site, $slug)) {
+        } elseif(!$page = $apiManager->getPage($apiManager, $site, $_locale, $slug)) {
             return new Response('Sorry, no page found[1]', Response::HTTP_BAD_REQUEST);
         } elseif(empty($page['route'])) {
             return new Response('Sorry, no page found[2]', Response::HTTP_NOT_FOUND);

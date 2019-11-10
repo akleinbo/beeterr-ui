@@ -47,7 +47,6 @@ class ApiManager
     public function getPages(ApiManager $apiManager, $site)
     {
         $url = $site['api']['api_pages'];
-        $url = str_replace('_LOCALE_', $site['locale'], $url);
 
         return $apiManager->curlRequest($url);
     }
@@ -55,13 +54,14 @@ class ApiManager
     /**
      * @param ApiManager $apiManager
      * @param            $site
+     * @param            $_locale
      * @param            $slug
      * @return mixed
      */
-    public function getPage(ApiManager $apiManager, $site, $slug = null)
+    public function getPage(ApiManager $apiManager, $site, $_locale, $slug = null)
     {
         $url = $site['api']['api_page'];
-        $url = str_replace('_LOCALE_', $site['locale'], $url);
+        $url = str_replace('_LOCALE_', $_locale, $url);
         $url = str_replace('_PAGE_SLUG_', $slug, $url);
 
         return $apiManager->curlRequest($url);
@@ -70,13 +70,14 @@ class ApiManager
     /**
      * @param ApiManager $apiManager
      * @param            $site
+     * @param            $_locale
      * @param            $needle
      * @return mixed
      */
-    public function getSearch(ApiManager $apiManager, $site, $needle = '')
+    public function getSearch(ApiManager $apiManager, $site, $_locale, $needle = '')
     {
         $url = $site['api']['api_search'];
-        $url = str_replace('_LOCALE_', $site['locale'], $url);
+        $url = str_replace('_LOCALE_', $_locale, $url);
         $url = str_replace('_NEEDLE_', $needle, $url);
 
         return $apiManager->curlRequest($url);
