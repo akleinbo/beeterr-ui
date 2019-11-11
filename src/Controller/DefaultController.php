@@ -59,9 +59,10 @@ class DefaultController extends AbstractController
     /**
      * @param ApiManager $apiManager
      * @param            $siteId
+     * @param            $_locale
      * @param string     $slug
      * @return Response
-     * @Route("/example/{_locale}/{slug}",
+     * @Route("/example/{_locale}/{siteId}/{slug}",
      *     name="example",
      *     defaults={"_locale"="nl"},
      *     requirements={"slug"="[^+]+", "_locale"="nl|en"}
@@ -70,14 +71,15 @@ class DefaultController extends AbstractController
     public function example(
         ApiManager $apiManager,
         $siteId,
+        $_locale,
         $slug = 'home'
     ) {
         if (!$site = $apiManager->getSite($this->getParameter('api_end_point_example') . $siteId)) {
             return new Response('Sorry, no site found[1]', Response::HTTP_BAD_REQUEST);
-        } elseif(!$page = $apiManager->getPage($apiManager, $site, $slug)) {
-            return new Response('Sorry, no page found[1]', Response::HTTP_BAD_REQUEST);
+        } elseif(!$page = $apiManager->getPage($apiManager, $site, $_locale, $slug)) {
+            return new Response('Sorry, no page found[2]', Response::HTTP_BAD_REQUEST);
         } elseif(empty($page['route'])) {
-            return new Response('Sorry, no page found[2]', Response::HTTP_NOT_FOUND);
+            return new Response('Sorry, no page found[3]', Response::HTTP_NOT_FOUND);
         } else {
             return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
                 'site' => $site,
