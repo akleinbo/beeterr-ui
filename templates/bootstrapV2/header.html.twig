@@ -20,8 +20,8 @@
         </div>
     </div>
     <!-- header -->
-    <div class="row">
-        <div class="col-8 py-3">
+    <div class="row align-items-top py-3">
+        <div class="col">
             {% if site.logo is not empty %}
                 <a href="/">
                     <img src="{{ site.logo }}" alt="{{ site.title }}">
@@ -35,11 +35,22 @@
                 </p>
             {% endif %}
         </div>
-        <div class="col-4 text-right">
+        <div class="col-auto">
             {% if site.locales|length > 1 %}
-                {% for locale in site.locales %}
-                    <a href="/{{ locale }}">{{ locale }}</a> {% if loop.last %}{% else %} | {% endif %}
-                {% endfor %}
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >{{ page.page.locale }}</button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                        {% for locale in site.locales %}
+                        <a class="dropdown-item" href="/{{ locale }}">{{ locale }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
             {% endif %}
         </div>
     </div>

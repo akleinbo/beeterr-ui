@@ -29,8 +29,8 @@
                         {% endfor %}
                     </div>
                     <div class="list-group pb-3">
-                        {% for menu in page.menus.bodyLeft %}
-                            <a class="list-group-item list-group-item-action{% if app.request.get('slug') == menu.slug %} active{% endif %}"
+                        {% for menu in page.menus.bodyLeft|default %}
+                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
                                href="{{ menu.slug }}"
                                target="{{ menu.target }}"
                                rel="{{ menu.rel }}"

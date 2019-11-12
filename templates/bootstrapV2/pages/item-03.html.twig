@@ -27,13 +27,32 @@
                     {{ page.page.description|raw }}
                 </div>
                 <div class="col-12 col-md-3">
-                    <ul class="navbar-nav flex-column">
+{#                    <ul class="navbar-nav flex-column">#}
+{#                        {% for menu in page.page.parent.children|default %}#}
+{#                            <li class="nav-item">#}
+{#                                <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>#}
+{#                            </li>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
+
+                    <div class="list-group pb-3">
                         {% for menu in page.page.parent.children|default %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>
-                            </li>
+                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                               href="{{ menu.slug }}"
+                               target="{{ menu.target }}"
+                               rel="{{ menu.rel }}"
+                            >{{ menu.title }}</a>
                         {% endfor %}
-                    </ul>
+                    </div>
+                    <div class="list-group pb-3">
+                        {% for menu in page.menus.bodyRight|default %}
+                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                               href="{{ menu.slug }}"
+                               target="{{ menu.target }}"
+                               rel="{{ menu.rel }}"
+                            >{{ menu.title }}</a>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </main>
