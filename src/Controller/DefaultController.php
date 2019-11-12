@@ -116,8 +116,10 @@ class DefaultController extends AbstractController
             return new Response('Sorry, no page found[2]', Response::HTTP_NOT_FOUND);
         } elseif($slug == 'search') {
 
+            # search
             $search = $apiManager->getSearch($apiManager, $site, $_locale, $request->get('needle'));
 
+            # return
             return $this->render($site['template'] . '/pages/search-01.html.twig', [
                 'site' => $site,
                 'page' => $page,
@@ -126,6 +128,7 @@ class DefaultController extends AbstractController
 
         } else {
 
+            # return
             return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
                 'site' => $site,
                 'page' => $page
