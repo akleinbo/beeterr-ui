@@ -116,7 +116,7 @@ class DefaultController extends AbstractController
             return new Response('Sorry, no page found[2]', Response::HTTP_NOT_FOUND);
         } elseif($slug == 'search') {
 
-            $search = $apiManager->getSearch($apiManager, $site, $request->get('needle'));
+            $search = $apiManager->getSearch($apiManager, $site, $_locale, $request->get('needle'));
 
             $page['page']['metaTitle'] = $translator->trans('Zoeken') . ':' . $request->get('needle');
 
