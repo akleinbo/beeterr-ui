@@ -118,8 +118,6 @@ class DefaultController extends AbstractController
 
             $search = $apiManager->getSearch($apiManager, $site, $_locale, $request->get('needle'));
 
-            $page['page']['metaTitle'] = $translator->trans('Zoeken') . ':' . $request->get('needle');
-
             return $this->render($site['template'] . '/pages/search-01.html.twig', [
                 'site' => $site,
                 'page' => $page,
