@@ -26,15 +26,19 @@
                     {% endif %}
                     {% for item in search %}
                         <div class="row pb-3">
-                            <div class="col-4">
+                            <div class="col-4 col-sm-3">
                                 {% set image = item.images|first %}
                                 {% if image|first is not empty %}
                                     <a href="{{ path('default', {'slug':item.slug}) }}">
                                         <img src="{{ image }}" class="img-fluid img-thumbnail" style="max-height:10em;">
                                     </a>
+                                {% else %}
+                                    <a href="{{ path('default', {'slug':item.slug}) }}">
+                                        <img src="{{ asset('templates/bootstrapV2/img/no-image.png')}}" class="img-fluid" style="max-height:10em;">
+                                    </a>
                                 {% endif %}
                             </div>
-                            <div class="col-8">
+                            <div class="col-8 col-sm-9">
                                 <p class="">
                                     <a href="{{ path('default', {'slug':item.slug}) }}">
                                         {{ item.title }}
