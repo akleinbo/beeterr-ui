@@ -10,23 +10,25 @@
     <!-- header -->
     {% include site.template~'/header.html.twig' %}
 
-    <!-- breadcrumbs -->
-    <div class="container styling-breadcrumbs bg-white pb-3">
-        {% include site.template~'/breadcrumbs.html.twig' %}
-    </div>
-    <!-- item-02 -->
-    <div class="container styling-item-02 bg-white pb-3">
-        <main id="content">
-            <div class="jumbotron bg-light text-dark">
-                <h1>{{ page.page.title }}</h1>
-                {{ page.page.banner|raw }}
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    {{ page.page.description|raw }}
+    <div class="container-fluid styling-container p-0">
+        <!-- breadcrumbs -->
+        <div class="container styling-breadcrumbs bg-white pt-3">
+            {% include site.template~'/breadcrumbs.html.twig' %}
+        </div>
+        <!-- item-02 -->
+        <div class="container styling-content bg-white py-3">
+            <main id="content">
+                <div class="jumbotron bg-light text-dark">
+                    <h1>{{ page.page.title }}</h1>
+                    {{ page.page.banner|raw }}
                 </div>
-            </div>
-        </main>
+                <div class="row">
+                    <div class="col-12">
+                        {{ page.page.description|raw }}
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
 
     <!-- footer -->

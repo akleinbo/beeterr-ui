@@ -1,119 +1,123 @@
-<div class="container styling-header bg-white">
-    <div class="row">
-        <div class="col-12 col-md-4 text-left">
-            {% for menu in page.menus.topLeft %}
-                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
-                {% if loop.last %}{% else %} | {% endif %}
-            {% endfor %}
+<div class="container-fluid styling-header-container p-0">
+    <div class="container styling-header bg-white">
+        <div class="row">
+            <div class="col-12 col-md-4 text-left">
+                {% for menu in page.menus.topLeft %}
+                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                    {% if loop.last %}{% else %} | {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-4 text-center">
+                {% for menu in page.menus.topMiddle %}
+                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                    {% if loop.last %}{% else %} | {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-4 text-right">
+                {% for menu in page.menus.topRight %}
+                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                    {% if loop.last %}{% else %} | {% endif %}
+                {% endfor %}
+            </div>
         </div>
-        <div class="col-12 col-md-4 text-center">
-            {% for menu in page.menus.topMiddle %}
-                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
-                {% if loop.last %}{% else %} | {% endif %}
-            {% endfor %}
-        </div>
-        <div class="col-12 col-md-4 text-right">
-            {% for menu in page.menus.topRight %}
-                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
-                {% if loop.last %}{% else %} | {% endif %}
-            {% endfor %}
-        </div>
-    </div>
-    <!-- header -->
-    <div class="row align-items-top py-3">
-        <div class="col">
-            {% if site.logo is not empty %}
-                <a href="/">
-                    <img src="{{ site.logo }}" alt="{{ site.title }}">
-                </a>
-            {% else %}
-                <a href="/">
-                    <span class="h1">{{ site.title }}</span>
-                </a>
-                <p class="mb-0">
-                    <i>{{ site.title_tag_line }}</i>
-                </p>
-            {% endif %}
-        </div>
-        <div class="col-auto">
-            {% if site.locales|length > 1 %}
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                    >{{ page.page.locale }}</button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                        {% for locale in site.locales %}
-                        <a class="dropdown-item" href="/{{ locale }}">{{ locale }}</a>
-                        {% endfor %}
+        <!-- header -->
+        <div class="row align-items-top py-3">
+            <div class="col">
+                {% if site.logo is not empty %}
+                    <a href="/">
+                        <img src="{{ site.logo }}" alt="{{ site.title }}">
+                    </a>
+                {% else %}
+                    <a href="/">
+                        <span class="h1">{{ site.title }}</span>
+                    </a>
+                    <p class="mb-0">
+                        <i>{{ site.title_tag_line }}</i>
+                    </p>
+                {% endif %}
+            </div>
+            <div class="col-auto">
+                {% if site.locales|length > 1 %}
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle"
+                                type="button"
+                                id="dropdownMenuButton"
+                                data-toggle="dropdown"
+                                aria-haspopup="true"
+                                aria-expanded="false"
+                        >{{ page.page.locale }}</button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                            {% for locale in site.locales %}
+                                <a class="dropdown-item" href="/{{ locale }}">{{ locale }}</a>
+                            {% endfor %}
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
-<div class="container styling-navbar bg-white pb-3">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="/">
-            <span class="fa fa-home"> </span>
-        </a>
-        <button class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"> </span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                {% for menu in page.menus.headerLeft %}
-                    {% if menu.children is empty %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
-                                {{ menu.title }}
-                            </a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
-                               href="{{ menu.slug }}"
-                               id="DropdownMenu_{{ menu.id }}"
-                               data-toggle="dropdown"
-                               aria-haspopup="true"
-                               aria-expanded="false">
-                                {{ menu.title }}
-                            </a>
-                            <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu_{{ menu.id }}">
-                                <a class="dropdown-item"
-                                   href="{{ menu.slug }}"
-                                   target="{{ menu.target }}"
-                                   rel="{{ menu.rel }}"
-                                >
-                                    <strong>{{ menu.title }}</strong>
+<div class="container-fluid styling-navbar-container p-0">
+    <div class="container styling-navbar bg-white">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="/">
+                <span class="fa fa-home"> </span>
+            </a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"> </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    {% for menu in page.menus.headerLeft %}
+                        {% if menu.children is empty %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                                    {{ menu.title }}
                                 </a>
-                                {% for m in menu.children %}
-                                    <a class="dropdown-item" href="{{ m.slug }}">{{ m.title }}</a>
-                                {% endfor %}
-                            </div>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <form class="styling-navbar-search form-inline my-2 my-lg-0" action="{{ path('default', {'slug':'search'}) }}">
-                <input class="form-control mr-sm-2"
-                       type="search"
-                       placeholder="{{ 'Search'|trans }}"
-                       aria-label="Search"
-                       name="needle"
-                       value="{{ app.request.get('needle') }}"
-                >
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{{ 'Search'|trans }}</button>
-            </form>
-        </div>
-    </nav>
+                            </li>
+                        {% else %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle"
+                                   href="{{ menu.slug }}"
+                                   id="DropdownMenu_{{ menu.id }}"
+                                   data-toggle="dropdown"
+                                   aria-haspopup="true"
+                                   aria-expanded="false">
+                                    {{ menu.title }}
+                                </a>
+                                <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu_{{ menu.id }}">
+                                    <a class="dropdown-item"
+                                       href="{{ menu.slug }}"
+                                       target="{{ menu.target }}"
+                                       rel="{{ menu.rel }}"
+                                    >
+                                        <strong>{{ menu.title }}</strong>
+                                    </a>
+                                    {% for m in menu.children %}
+                                        <a class="dropdown-item" href="{{ m.slug }}">{{ m.title }}</a>
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <form class="styling-navbar-search form-inline my-2 my-lg-0" action="{{ path('default', {'slug':'search'}) }}">
+                    <input class="form-control mr-sm-2"
+                           type="search"
+                           placeholder="{{ 'Search'|trans }}"
+                           aria-label="Search"
+                           name="needle"
+                           value="{{ app.request.get('needle') }}"
+                    >
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{{ 'Search'|trans }}</button>
+                </form>
+            </div>
+        </nav>
+    </div>
 </div>

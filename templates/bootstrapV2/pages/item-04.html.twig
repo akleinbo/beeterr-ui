@@ -10,24 +10,26 @@
     <!-- header -->
     {% include site.template~'/header.html.twig' %}
 
-    <!-- breadcrumbs -->
-    <div class="container styling-breadcrumbs bg-white pb-3">
-        {% include site.template~'/breadcrumbs.html.twig' %}
-    </div>
-    <!-- item-04 -->
-    <div class="container styling-item-04 bg-white pb-3">
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <h1>{{ page.page.title }}</h1>
-                {{ page.page.banner|raw }}
-                {{ page.page.description|raw }}
-            </div>
-            <div class="col-12 col-md-6">
-                {% if page.page.images is not empty %}
-                    <img class="img-fluid img-thumbnail rounded shadow"
-                         src="{{ page.page.images|first }}"
-                         alt="{{ page.page.title }}" />
-                {% endif %}
+    <div class="container-fluid styling-container p-0">
+        <!-- breadcrumbs -->
+        <div class="container styling-breadcrumbs bg-white pt-3">
+            {% include site.template~'/breadcrumbs.html.twig' %}
+        </div>
+        <!-- item04 -->
+        <div class="container styling-content bg-white py-3">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <h1>{{ page.page.title }}</h1>
+                    {{ page.page.banner|raw }}
+                    {{ page.page.description|raw }}
+                </div>
+                <div class="col-12 col-md-6">
+                    {% if page.page.images is not empty %}
+                        <img class="img-fluid img-thumbnail rounded shadow"
+                             src="{{ page.page.images|first }}"
+                             alt="{{ page.page.title }}" />
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

@@ -10,52 +10,46 @@
     <!-- header -->
     {% include site.template~'/header.html.twig' %}
 
-    <!-- breadcrumbs -->
-    <div class="container styling-breadcrumbs bg-white pb-3">
-        {% include site.template~'/breadcrumbs.html.twig' %}
-    </div>
-    <!-- item-03 -->
-    <div class="container styling-item-03 bg-white pb-3">
-        <main id="content">
-            <div class="jumbotron bg-light text-dark"
-                 style="background-image: url('{{ page.page.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
-                <h1>{{ page.page.title }}</h1>
-                {{ page.page.banner|raw }}
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-9">
-                    {{ page.page.description|raw }}
+    <div class="container-fluid styling-container p-0">
+        <!-- breadcrumbs -->
+        <div class="container styling-breadcrumbs bg-white pt-3">
+            {% include site.template~'/breadcrumbs.html.twig' %}
+        </div>
+        <!-- item-03 -->
+        <div class="container styling-content bg-white py-3">
+            <main id="content">
+                <div class="jumbotron bg-light text-dark"
+                     style="background-image: url('{{ page.page.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
+                    <h1>{{ page.page.title }}</h1>
+                    {{ page.page.banner|raw }}
                 </div>
-                <div class="col-12 col-md-3">
-{#                    <ul class="navbar-nav flex-column">#}
-{#                        {% for menu in page.page.parent.children|default %}#}
-{#                            <li class="nav-item">#}
-{#                                <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">{{ menu.title }}</a>#}
-{#                            </li>#}
-{#                        {% endfor %}#}
-{#                    </ul>#}
-
-                    <div class="list-group pb-3">
-                        {% for menu in page.page.parent.children|default %}
-                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
-                               href="{{ menu.slug }}"
-                               target="{{ menu.target }}"
-                               rel="{{ menu.rel }}"
-                            >{{ menu.title }}</a>
-                        {% endfor %}
+                <div class="row">
+                    <div class="col-12 col-md-9">
+                        {{ page.page.description|raw }}
                     </div>
-                    <div class="list-group pb-3">
-                        {% for menu in page.menus.bodyRight|default %}
-                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
-                               href="{{ menu.slug }}"
-                               target="{{ menu.target }}"
-                               rel="{{ menu.rel }}"
-                            >{{ menu.title }}</a>
-                        {% endfor %}
+                    <div class="col-12 col-md-3">
+                        <div class="list-group pb-3">
+                            {% for menu in page.page.parent.children|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="list-group pb-3">
+                            {% for menu in page.menus.bodyRight|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 
     <!-- footer -->

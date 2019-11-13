@@ -10,60 +10,83 @@
     <!-- header -->
     {% include site.template~'/header.html.twig' %}
 
-    <div class="container bg-white pb-3">
-        <main id="content">
-            <div class="row">
-                <div class="col-12 col-md-3">
-                    <span class="h2">{{ 'Filters'|trans }}</span>
-                    <p>{{ 'Er zijn geen filters gevonden.'|trans }}</p>
-                </div>
-                <div class="col-12 col-md-9">
-                    <h1>{{ 'Zoeken'|trans }}</h1>
-                    {% if search is empty %}
-                        <p>{{ 'Er zijn geen items gevonden.'|trans }}</p>
-                    {% else %}
-                        <p>{{ search|length }} {{ 'gevonden items'|trans }}</p>
-                    {% endif %}
-                    {% for item in search %}
-                        <div class="row pb-3">
-                            <div class="col-4 col-sm-3">
-                                {% set image = item.images|first %}
-                                {% if image|first is not empty %}
-                                    <a href="{{ item.slug }}">
-                                        <img src="{{ image }}" class="img-fluid img-thumbnail" style="max-height:10em;">
-                                    </a>
-                                {% else %}
-                                    <a href="{{ item.slug }}">
-                                        <img src="{{ asset('templates/bootstrapV2/img/no-image.png')}}" class="img-fluid" style="max-height:10em;">
-                                    </a>
-                                {% endif %}
-                            </div>
-                            <div class="col-8 col-sm-9">
-                                <p class="">
-                                    <a href="{{ item.slug }}">
-                                        {{ item.title }}
-                                    </a>
-                                </p>
-                                <p class="text-muted">
-                                    {% set banner = item.banner|split('.') %}
-                                    {{ banner|first|striptags }}
-
-                                    {% set description = item.description|split('.') %}
-                                    {{ description|first|striptags }}
-                                <p>
-                                    <a href="{{ item.slug }}">
-                                        <span class="fa fa-arrow-alt-circle-right"></span>
-                                        {{ 'Lees meer'|trans }}
-                                    </a>
-                                </p>
-                                </p>
-                            </div>
+    <div class="container-fluid styling-container p-0">
+        <!-- breadcrumbs -->
+        <div class="container styling-breadcrumbs bg-white pt-3">
+            {% include site.template~'/breadcrumbs.html.twig' %}
+        </div>
+        <!-- search -->
+        <div class="container styling-content bg-white py-3">
+            <main id="content">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="list-group">
+                            {% for menu in page.page.children|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
                         </div>
-                        <hr>
-                    {% endfor %}
+                        <div class="list-group pb-3">
+                            {% for menu in page.menus.bodyLeft|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <h1>{{ 'Zoeken'|trans }}</h1>
+                        {% if search is empty %}
+                            <p>{{ 'Er zijn geen items gevonden.'|trans }}</p>
+                        {% else %}
+                            <p>{{ search|length }} {{ 'gevonden items'|trans }}</p>
+                        {% endif %}
+                        {% for item in search %}
+                            <div class="row pb-3">
+                                <div class="col-4 col-sm-3">
+                                    {% set image = item.images|first %}
+                                    {% if image|first is not empty %}
+                                        <a href="{{ item.slug }}">
+                                            <img src="{{ image }}" class="img-fluid img-thumbnail" style="max-height:10em;">
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ item.slug }}">
+                                            <img src="{{ asset('templates/bootstrapV2/img/no-image.png')}}" class="img-fluid" style="max-height:10em;">
+                                        </a>
+                                    {% endif %}
+                                </div>
+                                <div class="col-8 col-sm-9">
+                                    <p class="">
+                                        <a href="{{ item.slug }}">
+                                            {{ item.title }}
+                                        </a>
+                                    </p>
+                                    <p class="text-muted">
+                                        {% set banner = item.banner|split('.') %}
+                                        {{ banner|first|striptags }}
+
+                                        {% set description = item.description|split('.') %}
+                                        {{ description|first|striptags }}
+                                    <p>
+                                        <a href="{{ item.slug }}">
+                                            <span class="fa fa-arrow-alt-circle-right"></span>
+                                            {{ 'Lees meer'|trans }}
+                                        </a>
+                                    </p>
+                                    </p>
+                                </div>
+                            </div>
+                            <hr>
+                        {% endfor %}
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 
     <!-- footer -->

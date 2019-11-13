@@ -3,8 +3,6 @@
 namespace App\Controller;
 
 use App\Service\ApiManager;
-use Doctrine\ORM\OptimisticLockException;
-use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -157,11 +155,6 @@ class DefaultController extends AbstractController
 
             # page
             $page = $apiManager->getPage($apiManager, $site, $site['locale'], $slug);
-
-            # 404
-            if($page['type'] == '404') {
-                $slug = '404';
-            }
 
             # return
             return $this->redirectToRoute('default', [

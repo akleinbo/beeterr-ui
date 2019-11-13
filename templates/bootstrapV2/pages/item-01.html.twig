@@ -10,18 +10,18 @@
     <!-- header -->
     {% include site.template~'/header.html.twig' %}
 
-    <!-- breadcrumbs -->
-    <div class="container styling-breadcrumbs bg-white pb-3">
-        {% include site.template~'/breadcrumbs.html.twig' %}
-    </div>
-    <!-- item-01 -->
-    <div class="container styling-item-01 bg-white pb-3">
-        <main id="content">
+    <div class="container-fluid styling-container p-0">
+        <!-- breadcrumbs -->
+        <div class="container styling-breadcrumbs bg-white pt-3">
+            {% include site.template~'/breadcrumbs.html.twig' %}
+        </div>
+        <!-- item-01 -->
+        <div class="container styling-content bg-white py-3">
             <div class="row">
                 <div class="col-12 col-sm-3">
-                    <div class="list-group pb-3">
+                    <div class="list-group">
                         {% for menu in page.page.parent.children|default %}
-                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                            <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
                                href="{{ menu.slug }}"
                                target="{{ menu.target }}"
                                rel="{{ menu.rel }}"
@@ -58,7 +58,7 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     </div>
 
     <!-- footer -->
