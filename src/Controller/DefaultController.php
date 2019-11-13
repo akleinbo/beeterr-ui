@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Service\ApiManager;
+use Doctrine\ORM\OptimisticLockException;
+use Doctrine\ORM\ORMException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -133,6 +135,39 @@ class DefaultController extends AbstractController
                 'site' => $site,
                 'page' => $page
             ]);
+        }
+    }
+
+    /**
+     * @param ApiManager          $apiManager
+     * @param string              $slug
+     * @return Response
+     * @Route("/{slug}",
+     *     name="redirect",
+     *     requirements={"slug"="[^+]+"}
+     * )
+     */
+    public function redirector(
+        ApiManager $apiManager,
+        $slug = 'home'
+    ) {
+        if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
+            return new Response('Sorry, no site found[1]', Response::HTTP_BAD_REQUEST);
+        } else {
+
+            # page
+            $page = $apiManager->getPage($apiManager, $site, $site['locale'], $slug);
+
+            # 404
+            if($page['type'] == '404') {
+                $slug = '404';
+            }
+
+            # return
+            return $this->redirectToRoute('default', [
+                'slug' => $slug,
+                '_locale' => $page['page']['locale']
+            ], Response::HTTP_MOVED_PERMANENTLY);
         }
     }
 }
