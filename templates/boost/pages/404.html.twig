@@ -20,7 +20,7 @@
                             {{ 'Dit kan gebeuren wanneer een pagina is gewijzgd of verwijderd.'|trans }}
                             {{ 'Het kan ook zijn dat je een type fout hebt gemaakt bij het invoeren van het adres.'|trans }}
                         </p>
-                        <a href="{{ path('default') }}" class="btn btn-pill btn-primary mb-6">
+                        <a href="{{ path('default', {'_locale':site.locale}) }}" class="btn btn-pill btn-primary mb-6">
                             <span class="fa fa-arrow-circle-left"></span>
                             {{ 'Home'|trans }}
                         </a>

@@ -24,7 +24,7 @@
                         {{ 'Gebruik onze zoekfunctie boven in de pagina om onze website te doorzoeken.  '|trans }}
                     </p>
                     <p>
-                        <a href="{{ path('default') }}">
+                        <a href="{{ path('default', {'_locale':site.locale}) }}">
                             <span class="fa fa-arrow-circle-left"></span>
                             {{ 'Home'|trans }}
                         </a>
