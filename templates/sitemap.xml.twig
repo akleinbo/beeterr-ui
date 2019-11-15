@@ -3,7 +3,7 @@
     {% for page in pages %}
         <url>
             <loc>
-                {{ app.request.schemeAndHttpHost }}{{ page.slug }}
+                {{ app.request.schemeAndHttpHost }}{% if page.slug != '/nl/home' %}{{ page.slug }}{% endif %}
             </loc>
             <lastmod>{{ page.modified|date('Y-m-d') }}</lastmod>
         </url>
