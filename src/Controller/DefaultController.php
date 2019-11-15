@@ -156,11 +156,24 @@ class DefaultController extends AbstractController
             # page
             $page = $apiManager->getPage($apiManager, $site, $site['locale'], $slug);
 
-            # return
-            return $this->redirectToRoute('default', [
-                'slug' => $slug,
-                '_locale' => $page['page']['locale']
-            ], Response::HTTP_MOVED_PERMANENTLY);
+            # 404
+            if($page['type'] === '404') {
+
+                # return
+                return new Response(
+                    $this->render($site['template'] . '/' . $page['route'] . '/404.html.twig', [
+                        'site' => $site,
+                        'page' => $page
+                    ]), Response::HTTP_NOT_FOUND);
+
+            } else {
+
+                # return
+                return $this->redirectToRoute('default', [
+                    'slug' => $slug,
+                    '_locale' => $page['page']['locale']
+                ], Response::HTTP_MOVED_PERMANENTLY);
+            }
         }
     }
 }

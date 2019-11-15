@@ -1,6 +1,7 @@
 {% extends site.template~'/base.html.twig' %}
 
-{% block title %}404{% endblock %}
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
 
 {% block body %}
 
