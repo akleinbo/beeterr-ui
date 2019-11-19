@@ -41,7 +41,6 @@ class DefaultController extends AbstractController
     public function siteMap(
         ApiManager $apiManager
     ) {
-
         if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
             return new Response('Sorry, no site found.', Response::HTTP_BAD_REQUEST);
         } else {
@@ -49,6 +48,7 @@ class DefaultController extends AbstractController
             # pages
             $pages = $apiManager->getPages($apiManager, $site);
 
+            # return
             return $this->render('sitemap.xml.twig', array(
                 'site' => $site,
                 'pages' => $pages
