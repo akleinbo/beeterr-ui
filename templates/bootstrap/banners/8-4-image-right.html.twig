@@ -8,13 +8,12 @@
                    href="{{ cta.slug }}"
                    target="{{ cta.target }}"
                    rel="{{ cta.rel }}"
-                >
-                    {{ cta.title }} »
-                </a>
+                >{{ cta.title }} »</a>
             {% endfor %}
         </div>
         <div class="col-lg-4 text-center">
-            <img src="{{ banner.images|first }}?id={{ random() }}" class="img-thumbnail mb-4 mb-lg-0" alt="">
+            <img src="{{ banner.images|first }}?id={{ random() }}"
+                 class="img-thumbnail mb-4 mb-lg-0" alt="" />
         </div>
     </div>
 </section>
