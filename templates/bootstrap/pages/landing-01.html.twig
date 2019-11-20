@@ -1,4 +1,4 @@
-{% extends site.template~'/base.html.twig' %}
+{% extends '/bootstrap/base.html.twig' %}
 
 {% block title %}{{ page.page.metaTitle|default }}{% endblock %}
 {% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
@@ -7,15 +7,22 @@
 
 {% block body %}
 
+    <!-- header -->
+    {% include '/bootstrap/'~site.template~'.html.twig' %}
+
     <!-- landing-01 -->
     {% for banner in page.banners %}
 
         <div class="container-fluid p-0 styling-container-{{ banner.id }}">
+            <div class="styling-container-bg-{{ banner.id }}"></div>
             <div class="container bg-white py-3 styling-content-{{ banner.id }}">
-                {% include site.template~'/banners/'~banner.type~'.html.twig' %}
+                {% include '/bootstrap/banners/'~banner.type~'.html.twig' %}
             </div>
         </div>
 
     {% endfor %}
+
+    <!-- footer -->
+    {% include '/bootstrap/footer.html.twig' %}
 
 {% endblock %}

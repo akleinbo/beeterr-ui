@@ -32,7 +32,11 @@
                     <img src="{{ site.logo }}" width="30" height="30" class="d-inline-block align-top" alt="{{ site.title }}">
                 {% endif %}
                 {% if site.title is not empty %}
-                    {{ site.title }}
+                    {% set title = site.title|split(" ") %}
+                    <span class="text-primary">{{ title|first }}</span>
+                    {% for t in title|slice(1,10) %}
+                        <span>{{ t }} </span>
+                    {% endfor %}
                 {% endif %}
             </a>
             <button class="navbar-toggler"

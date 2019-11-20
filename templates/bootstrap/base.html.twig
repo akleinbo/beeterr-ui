@@ -1,4 +1,4 @@
-<!doctype html>
+<!doctype HTML>
 <html lang="{{ page.page.locale|default }}">
 <head>
     <meta charset="utf-8">
@@ -6,25 +6,20 @@
     <meta name="description" content="{% block metaDescription %}{% endblock %}">
     <meta name="keywords" content="{% block metaKeywords %}{% endblock %}">
     <meta name="author" content="{% block metaAuthor %}{% endblock %}">
-
     {% block stylesheets %}
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ site.api.api_style }}">
     {% endblock %}
-
     {% block headerJavascripts %}{% endblock %}
-
     {% block favicons %}
         {% if site.favicon is not empty %}
             <link rel="icon" href="{{ site.favicon }}" sizes="any" />
         {% endif %}
     {% endblock %}
-
     {% block headerAnalyticsCode %}
         {{ site.headerCode|raw }}
     {% endblock %}
-
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body class="bg-light">

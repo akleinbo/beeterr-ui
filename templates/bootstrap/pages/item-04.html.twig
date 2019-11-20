@@ -1,4 +1,4 @@
-{% extends site.template~'/base.html.twig' %}
+{% extends '/bootstrap/base.html.twig' %}
 
 {% block title %}{{ page.page.metaTitle|default }}{% endblock %}
 {% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
@@ -8,29 +8,32 @@
 {% block body %}
 
     <!-- header -->
-    {% include site.template~'/header.html.twig' %}
+    {% include '/bootstrap/'~site.template~'.html.twig' %}
 
-    <!-- item-02 -->
+    <!-- item-04 -->
     <div class="container-fluid styling-container p-0">
         <div class="container styling-breadcrumbs bg-white pt-3">
-            {% include site.template~'/breadcrumbs.html.twig' %}
+            {% include '/bootstrap/breadcrumbs.html.twig' %}
         </div>
         <div class="container styling-content bg-white py-3">
-            <main id="content">
-                <div class="jumbotron bg-light text-dark">
+            <div class="row">
+                <div class="col-12 col-md-6">
                     <h1>{{ page.page.title }}</h1>
                     {{ page.page.banner|raw }}
+                    {{ page.page.description|raw }}
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        {{ page.page.description|raw }}
-                    </div>
+                <div class="col-12 col-md-6">
+                    {% if page.page.images is not empty %}
+                        <img class="img-fluid img-thumbnail rounded shadow"
+                             src="{{ page.page.images|first }}"
+                             alt="{{ page.page.title }}" />
+                    {% endif %}
                 </div>
-            </main>
+            </div>
         </div>
     </div>
 
     <!-- footer -->
-    {% include site.template~'/footer.html.twig' %}
+    {% include '/bootstrap/footer.html.twig' %}
 
 {% endblock %}

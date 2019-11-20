@@ -81,7 +81,7 @@ class DefaultController extends AbstractController
         } elseif(empty($page['route'])) {
             return new Response('Sorry, no page found[3]', Response::HTTP_NOT_FOUND);
         } else {
-            return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
+            return $this->render('/bootstrap/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
                 'site' => $site,
                 'page' => $page
             ]);
@@ -120,7 +120,7 @@ class DefaultController extends AbstractController
             $search = $apiManager->getSearch($apiManager, $site, $_locale, $request->get('needle'));
 
             # return
-            return $this->render($site['template'] . '/pages/search-01.html.twig', [
+            return $this->render( 'bootstrap/pages/search-01.html.twig', [
                 'site' => $site,
                 'page' => $page,
                 'search' => $search
@@ -129,7 +129,7 @@ class DefaultController extends AbstractController
         } else {
 
             # return
-            return $this->render($site['template'] . '/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
+            return $this->render('/bootstrap/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
                 'site' => $site,
                 'page' => $page
             ]);
@@ -161,7 +161,7 @@ class DefaultController extends AbstractController
 
                 # return
                 return new Response(
-                    $this->render($site['template'] . '/' . $page['route'] . '/404.html.twig', [
+                    $this->render('/bootstrap/' . $page['route'] . '/404.html.twig', [
                         'site' => $site,
                         'page' => $page
                     ]), Response::HTTP_NOT_FOUND);
