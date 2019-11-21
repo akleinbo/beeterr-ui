@@ -17,10 +17,20 @@
         </div>
         <div class="container content styling-content py-3">
             <main id="content">
-                <div class="jumbotron bg-light text-dark styling-banner">
-                    <h1>{{ page.page.title }}</h1>
-                    {{ page.page.banner|raw }}
-                </div>
+                {% if page.page.images|first is not empty %}
+                    <div class="jumbotron shadow border bg-primary text-white"
+                         style="background-image: url('{{ page.page.images|first }}'); background-position: center center; background-size: cover;">
+                        <h1>{{ page.page.title }}</h1>
+                        <hr class="border-white ml-0 mb-3 text-left">
+                        {{ page.page.banner|raw }}
+                    </div>
+                {% else %}
+                    <div class="bg-light text-dark p-3 mb-3 rounded styling-banner">
+                        <h1>{{ page.page.title }}</h1>
+                        <hr class="border-dark ml-0 mb-3 text-left">
+                        {{ page.page.banner|raw }}
+                    </div>
+                {% endif %}
                 <div class="row">
                     <div class="col-12">
                         {{ page.page.description|raw }}

@@ -27,9 +27,14 @@
 <div class="container-fluid styling-navbar-container p-0">
     <div class="container styling-navbar bg-white">
         <nav class="navbar navbar-expand-lg navbar-light bg-white p-0 py-3 styling-navbar-bg">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="/" title="{{ site.title }}">
                 {% if site.logo is not empty %}
-                    <img src="{{ site.logo }}" width="30" height="30" class="d-inline-block align-top" alt="{{ site.title }}">
+                    <img src="{{ site.logo }}"
+                         width="30"
+                         height="30"
+                         class="d-inline-block align-top"
+                         alt="{{ site.title }}"
+                         title="{{ site.title }}" />
                 {% endif %}
                 {% if site.title is not empty %}
                     {% set title = site.title|split(" ") %}
@@ -52,23 +57,23 @@
                 <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
                     {% for menu in page.menus.headerRight %}
                         {% if menu.children is empty %}
-                            <li class="nav-item">
+                            <li class="nav-item pl-3">
                                 <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
                                     {{ menu.title }}
                                 </a>
                             </li>
                         {% else %}
-                            <li class="nav-item dropdown">
+                            <li class="nav-item pl-3 dropdown">
                                 <a class="nav-link dropdown-toggle"
                                    href="{{ menu.slug }}"
                                    id="DropdownMenu_{{ menu.id }}"
                                    data-toggle="dropdown"
                                    aria-haspopup="true"
-                                   aria-expanded="false">
-                                    {{ menu.title }}
-                                </a>
-                                <div class="dropdown-menu mb-2" aria-labelledby="DropdownMenu_{{ menu.id }}">
-                                    <a class="dropdown-item"
+                                   aria-expanded="false"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
+                                <div class="dropdown-menu dropdown-menu-right mb-3 shadow styling-dropdown-menu" aria-labelledby="DropdownMenu_{{ menu.id }}">
+                                    <a class="dropdown-item p-3 px-4 border-bottom"
                                        href="{{ menu.slug }}"
                                        target="{{ menu.target }}"
                                        rel="{{ menu.rel }}"
@@ -76,13 +81,37 @@
                                         <strong>{{ menu.title }}</strong>
                                     </a>
                                     {% for m in menu.children %}
-                                        <a class="dropdown-item" href="{{ m.slug }}">{{ m.title }}</a>
+                                        <a class="dropdown-item p-3 px-4 {% if loop.last %}{% else %}border-bottom{% endif %}"
+                                           href="{{ m.slug }}"
+                                           title="{{ m.title }}"
+                                        >{{ m.title }}</a>
                                     {% endfor %}
                                 </div>
                             </li>
                         {% endif %}
                     {% endfor %}
                 </ul>
+                <div class="col-auto">
+                    {% if site.locales|length > 1 %}
+                        <div class="dropdown">
+                            <button class="btn dropdown-toggle"
+                                    type="button"
+                                    id="dropdownMenuButton"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true"
+                                    aria-expanded="false"
+                            >{{ page.page.locale }}</button>
+                            <div class="dropdown-menu dropdown-menu-right mb-3 shadow styling-dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                {% for locale in site.locales %}
+                                    <a class="dropdown-item p-3 px-4 {% if loop.last %}{% else %}border-bottom{% endif %}"
+                                       href="/{{ locale }}"
+                                       title="{{ locale }}"
+                                    >{{ locale }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
             </div>
         </nav>
     </div>

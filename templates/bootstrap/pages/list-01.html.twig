@@ -17,9 +17,9 @@
         </div>
         <div class="container content styling-content py-3">
             <main id="content">
-                <div class="bg-primary text-white p-3 mb-3 styling-banner">
+                <div class="bg-light text-dark p-3 mb-3 rounded styling-banner">
                     <h1>{{ page.page.title }}</h1>
-                    <hr class="border-white ml-0 mb-3 text-left">
+                    <hr class="border-dark ml-0 mb-3 text-left">
                     {{ page.page.banner|raw }}
                     {{ page.page.description|raw }}
                 </div>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="list-group">
                             {% for menu in page.page.children|default %}
-                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
                                    href="{{ menu.slug }}"
                                    target="{{ menu.target }}"
                                    rel="{{ menu.rel }}"

@@ -1,16 +1,13 @@
-<div>
-    <div class="jumbotron bg-light text-dark" style="background-image: url('{{ banner.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
-        <h1>{{ banner.title }}</h1>
-        {{ banner.description|raw }}
-        {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
-            <a class="btn btn-pill btn-primary btn-lg"
-               href="{{ cta.slug }}"
-               target="{{ cta.target }}"
-               rel="{{ cta.rel }}"
-               role="button"
-            >
-                {{ cta.title }} »
-            </a>
-        {% endfor %}
-    </div>
+<div class="py-5 styling-banner-jumbotron-white" style="background-image: url('{{ banner.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
+    <h1>{{ banner.title }}</h1>
+    {{ banner.description|raw }}
+    {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
+        <a class="btn btn-pill btn-primary btn-lg"
+           href="{{ cta.slug }}"
+           target="{{ cta.target }}"
+           rel="{{ cta.rel }}"
+           role="button"
+           title="{{ cta.title }}"
+        >{{ cta.title }}</a>
+    {% endfor %}
 </div>
