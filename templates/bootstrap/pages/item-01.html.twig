@@ -19,25 +19,27 @@
             <div class="row">
                 <div class="col-12 col-sm-3">
                     <div class="list-group">
-                        {% for menu in page.page.parent.children|default %}
+                        {% for menu in page.menus.bodyLeft|default %}
                             <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
                                href="{{ menu.slug }}"
                                target="{{ menu.target }}"
                                rel="{{ menu.rel }}"
+                               title="{{ menu.title }}"
                             >{{ menu.title }}</a>
                         {% endfor %}
                     </div>
-                    <div class="list-group pb-3">
-                        {% for menu in page.menus.bodyLeft|default %}
+                    <div class="list-group">
+                        {% for menu in page.page.parent.children|default %}
                             <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %}"
                                href="{{ menu.slug }}"
                                target="{{ menu.target }}"
                                rel="{{ menu.rel }}"
+                               title="{{ menu.title }}"
                             >{{ menu.title }}</a>
                         {% endfor %}
                     </div>
                 </div>
-                <div class="col-12 col-sm-9 pb-3">
+                <div class="col-12 col-sm-9">
                     {% if page.page.images|first is not empty %}
                         <div class="jumbotron shadow border bg-primary text-white"
                              style="background-image: url('{{ page.page.images|first }}'); background-position: center center; background-size: cover;">
@@ -45,8 +47,9 @@
                             {{ page.page.banner|raw }}
                         </div>
                     {% else %}
-                        <div class="jumbotron bg-light text-dark">
+                        <div class="bg-primary text-white p-3 mb-3 styling-banner">
                             <h1>{{ page.page.title }}</h1>
+                            <hr class="border-white ml-0 mb-3 text-left">
                             {{ page.page.banner|raw }}
                         </div>
                     {% endif %}

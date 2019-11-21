@@ -121,21 +121,21 @@
         </div>
     </div>
 </div>
-<div class="container-fluid bg-dark text-white">
+<div class="container-fluid small styling-footer-bottom">
     <div class="row py-2">
-        <div class="col-12 col-md-4 text-muted text-left">
+        <div class="col-12 col-md-3 text-muted text-left">
             {% for menu in page.menus.bottomLeft %}
                 <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
                 {% if loop.last %}{% else %} | {% endif %}
             {% endfor %}
         </div>
-        <div class="col-12 col-md-4 text-muted text-center">
+        <div class="col-12 col-md-6 text-muted text-center">
             {% for menu in page.menus.bottomMiddle %}
                 <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
                 {% if loop.last %}{% else %} | {% endif %}
             {% endfor %}
         </div>
-        <div class="col-12 col-md-4 text-muted text-right">
+        <div class="col-12 col-md-3 text-muted text-right">
             {% for menu in page.menus.bottomRight %}
                 <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
                 {% if loop.last %}{% else %} | {% endif %}
