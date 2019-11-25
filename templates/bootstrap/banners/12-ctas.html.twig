@@ -8,10 +8,9 @@
                    href="{{ cta.slug }}"
                    target="{{ cta.target }}"
                    rel="{{ cta.rel }}"
+                   title="{{ cta.title }}"
                    role="button"
-                >
-                    {{ cta.title }} »
-                </a>
+                >{{ cta.title }}</a>
             {% endfor %}
             {% for cta in banner.CTAS|slice(1,1) if cta is defined %}
                 <a class="btn btn-link" href="{{ cta.slug }}" target="{{ cta.target }}" rel="{{ cta.rel }}" role="button">{{ cta.title }}</a>

@@ -10,7 +10,6 @@
                 <li class="breadcrumb-item{% if loop.last %} active{% endif %}">{{ breadCrumb.title|raw }}</li>
             {% else %}
                 <li class="breadcrumb-item{% if loop.last %} active{% endif %}" {% if loop.last %} aria-current="page"{% endif %}>
-
                     {% if loop.last %}
                         {{ breadCrumb.title|raw }}
                     {% else %}

@@ -1,28 +1,30 @@
-<div class="row">
-    <div class="col-lg-6 d-none d-sm-block">
-        <img src="{{ banner.images|first }}?id={{ random() }}"
-             class="img-fluid img-thumbnail"
-             alt="{{ banner.title }}">
+<section class="pb-3">
+    <div class="row">
+        <div class="col-lg-6 mb-3">
+            <img src="{{ banner.images|first }}?id={{ random() }}"
+                 class="img-fluid img-thumbnail"
+                 alt="{{ banner.title }}">
+        </div>
+        <div class="col-lg-6 mb-3 mb-lg-0">
+            <h2>{{ banner.title }}</h2>
+            <hr class="ml-0 mb-3 text-left">
+            {{ banner.description|raw }}
+            {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
+                <a class="btn btn-pill btn-primary"
+                   href="{{ cta.slug }}"
+                   target="{{ cta.target }}"
+                   rel="{{ cta.rel }}"
+                   role="button"
+                >{{ cta.title }}</a>
+            {% endfor %}
+            {% for cta in banner.CTAS|slice(1,1) if cta is defined %}
+                <a class="btn btn-link"
+                   href="{{ cta.slug }}"
+                   target="{{ cta.target }}"
+                   rel="{{ cta.rel }}"
+                   role="button"
+                >{{ cta.title }} »</a>
+            {% endfor %}
+        </div>
     </div>
-    <div class="col-lg-6 mb-4 mb-lg-0">
-        <h2>{{ banner.title }}</h2>
-        <hr class="ml-0 mb-3 text-left">
-        {{ banner.description|raw }}
-        {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
-            <a class="btn btn-pill btn-primary"
-               href="{{ cta.slug }}"
-               target="{{ cta.target }}"
-               rel="{{ cta.rel }}"
-               role="button"
-            >{{ cta.title }}</a>
-        {% endfor %}
-        {% for cta in banner.CTAS|slice(1,1) if cta is defined %}
-            <a class="btn btn-link"
-               href="{{ cta.slug }}"
-               target="{{ cta.target }}"
-               rel="{{ cta.rel }}"
-               role="button"
-            >{{ cta.title }} »</a>
-        {% endfor %}
-    </div>
-</div>
+</section>

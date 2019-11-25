@@ -62,8 +62,8 @@
                                             {% set banner = item.banner|split('.') %}
                                             {% set banner = banner[0] %}
                                             {% set banner = banner|striptags %}
-                                            {% set banner = banner|slice(0, 75) %}
-                                            <p class="card-text h-100">{{ banner|raw }}..</p>
+{#                                            {% set banner = banner|slice(0, 75) %}#}
+                                            <p class="card-text h-100">{{ banner|raw }}.</p>
                                             <a href="{{ item.slug }}" class="btn btn-pill btn-primary btn-sm">{{ 'Lees meer'|trans }}</a>
                                         </div>
                                     </div>
