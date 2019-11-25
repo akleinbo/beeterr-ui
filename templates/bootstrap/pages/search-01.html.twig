@@ -43,7 +43,10 @@
                         {% if search is empty %}
                             <p>{{ 'Er zijn geen items gevonden.'|trans }}</p>
                         {% else %}
-                            <p>{{ search|length }} {{ 'gevonden items'|trans }}</p>
+                            <p>
+                                <span class="badge badge-pill badge-success">
+                                    {{ search|length }}
+                                </span> {{ 'gevonden items'|trans }}</p>
                         {% endif %}
                         {% for item in search %}
                             <div class="row pb-3">
@@ -51,11 +54,11 @@
                                     {% set image = item.images|first %}
                                     {% if image|first is not empty %}
                                         <a href="{{ item.slug }}">
-                                            <img src="{{ image }}" class="img-fluid img-thumbnail" style="max-height:10em;">
+                                            <img src="{{ image }}" class="img-fluid img-thumbnail" />
                                         </a>
                                     {% else %}
                                         <a href="{{ item.slug }}">
-                                            <img src="{{ asset('templates/bootstrapV2/img/no-image.png')}}" class="img-fluid" style="max-height:10em;">
+                                            <img src="{{ asset('templates/bootstrapV2/img/no-image.png')}}" class="img-fluid" />
                                         </a>
                                     {% endif %}
                                 </div>

@@ -54,6 +54,15 @@
                 <span class="navbar-toggler-icon"> </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <form class="d-md-flex d-block flex-row mx-md-auto mx-0" action="{{ path('default', {'slug':'search'}) }}">
+                    <input class="form-control rounded-pill search-input"
+                           type="search"
+                           placeholder="{{ 'Search'|trans }}"
+                           aria-label="Search"
+                           name="needle"
+                           value="{{ app.request.get('needle') }}"
+                    >
+                </form>
                 <ul class="navbar-nav align-items-lg-center text-uppercase pt-3 pt-lg-0 ml-auto">
                     {% for menu in page.menus.headerRight %}
                         {% if menu.children is empty %}

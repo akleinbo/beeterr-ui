@@ -1,4 +1,4 @@
-<div class="p-5 styling-banner-jumbotron-white" style="background-image: url('{{ banner.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
+<div class="p-0 p-md-5 py-3 styling-banner-jumbotron-white" style="background-image: url('{{ banner.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
     <h1>{{ banner.title }}</h1>
     {{ banner.description|raw }}
     {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
