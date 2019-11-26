@@ -1,4 +1,5 @@
 <div class="container-fluid styling-footer styling-footer-{{ page.page.id }} p-0">
+    <div class="styling-footerr-bg-{{ page.page.id }}"></div>
     <div class="container pt-5 pb-3">
         <div class="row justify-content-md-between">
             <div class="col-12 col-md-4 mb-4">
@@ -28,14 +29,14 @@
                         {% endif %}
                     {% endfor %}
                 </ul>
-                {% if site.email is defined %}
+                {% if site.email is not empty %}
                     <p class="text-nowrap">
                         <a href="mailto:{{ site.email }}">
                             <span class="fa fa-envelope-open" aria-hidden="true"> </span> {{ site.email }}
                         </a>
                     </p>
                 {% endif %}
-                {% if site.phone is defined %}
+                {% if site.phone is not empty %}
                     <p class="text-nowrap">
                         <a href="tel:{{ site.phone }}">
                             <span class="fa fa-phone" aria-hidden="true"> </span> {{ site.phone }}
@@ -126,7 +127,6 @@
 </div>
 <div class="container-fluid small pb-5 styling-footer-bottom styling-footer-bottom-{{ page.page.id }}">
     <div class="row">
-
         <div class="container">
             <hr class="m-0">
             <div class="row py-2">
