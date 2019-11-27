@@ -3,7 +3,8 @@
         <div class="col-lg-6 mb-3">
             <img src="{{ banner.images|first }}?id={{ random() }}"
                  class="img-fluid img-thumbnail"
-                 alt="{{ banner.title }}">
+                 alt="{{ banner.title }}"
+                 title="{{ banner.title }}" >
         </div>
         <div class="col-lg-6 mb-3 mb-lg-0">
             <h2>{{ banner.title }}</h2>
@@ -15,6 +16,7 @@
                    target="{{ cta.target }}"
                    rel="{{ cta.rel }}"
                    role="button"
+                   title="{{ cta.title }}"
                 >{{ cta.title }}</a>
             {% endfor %}
             {% for cta in banner.CTAS|slice(1,1) if cta is defined %}
@@ -23,6 +25,7 @@
                    target="{{ cta.target }}"
                    rel="{{ cta.rel }}"
                    role="button"
+                   title="{{ cta.title }}"
                 >{{ cta.title }} »</a>
             {% endfor %}
         </div>

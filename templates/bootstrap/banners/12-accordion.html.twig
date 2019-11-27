@@ -14,12 +14,15 @@
                                    data-target="#collapse{{ item.id }}"
                                    aria-expanded="false"
                                    aria-controls="collapse{{ item.id }}"
+                                   title="{{ item.title }}"
                                 >
                                     {{ item.title }} <i class="fas fa-angle-down float-right rotate-icon"> </i>
                                 </a>
                             </h3>
                         </div>
-                        <div id="collapse{{ item.id }}" class="collapse" aria-labelledby="heading{{ item.id }}" data-parent="#accordionQuestions">
+                        <div id="collapse{{ item.id }}"
+                             class="collapse"
+                             aria-labelledby="heading{{ item.id }}" data-parent="#accordionQuestions">
                             <div class="card-body">
                                 {{ item.description|raw }}
                             </div>

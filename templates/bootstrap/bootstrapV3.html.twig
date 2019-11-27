@@ -5,19 +5,34 @@
         <div class="row">
             <div class="col-12 col-md-4 text-left">
                 {% for menu in page.menus.topLeft %}
-                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                    <a href="{{ menu.slug }}"
+                       rel="{{ menu.rel }}"
+                       target="{{ menu.target }}"
+                       class="text-muted"
+                       title="{{ menu.title }}"
+                    >{{ menu.title }}</a>
                     {% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
             <div class="col-12 col-md-4 text-center">
                 {% for menu in page.menus.topMiddle %}
-                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                    <a href="{{ menu.slug }}"
+                       rel="{{ menu.rel }}"
+                       target="{{ menu.target }}"
+                       class="text-muted"
+                       title="{{ menu.title }}"
+                    >{{ menu.title }}</a>
                     {% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
             <div class="col-12 col-md-4 text-right">
                 {% for menu in page.menus.topRight %}
-                    <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                    <a href="{{ menu.slug }}"
+                       rel="{{ menu.rel }}"
+                       target="{{ menu.target }}"
+                       class="text-muted"
+                       title="{{ menu.title }}"
+                    >{{ menu.title }}</a>
                     {% if loop.last %}{% else %} | {% endif %}
                 {% endfor %}
             </div>
@@ -27,7 +42,9 @@
 <div class="container-fluid styling-navbar-container p-0">
     <div class="container styling-navbar bg-white">
         <nav class="navbar navbar-expand-lg navbar-light bg-white p-0 py-3 styling-navbar-bg">
-            <a class="navbar-brand" href="/" title="{{ site.title }}">
+            <a class="navbar-brand"
+               href="/"
+               title="{{ site.title }}">
                 {% if site.logo is not empty %}
                     <img src="{{ site.logo }}"
                          width="30"
@@ -67,7 +84,12 @@
                     {% for menu in page.menus.headerRight %}
                         {% if menu.children is empty %}
                             <li class="nav-item pl-3">
-                                <a class="nav-link" href="{{ menu.slug }}" target="{{ menu.target }}" rel="{{ menu.rel }}">
+                                <a class="nav-link"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                   title="{{ menu.title }}"
+                                >
                                     {{ menu.title }}
                                 </a>
                             </li>
@@ -86,6 +108,7 @@
                                        href="{{ menu.slug }}"
                                        target="{{ menu.target }}"
                                        rel="{{ menu.rel }}"
+                                       title="{{ menu.title }}"
                                     >
                                         <strong>{{ menu.title }}</strong>
                                     </a>

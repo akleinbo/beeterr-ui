@@ -75,9 +75,9 @@
                                     >
                                         <h5>{{ item.title }}</h5>
                                     </a>
-                                    <p class="small mb-3 styling-date-published">
-                                        <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
-                                        <span class="text-uppercase">{{ page.page.created }}</span>
+                                    <p class="small mb-3 text-muted styling-date-published">
+                                        <span>{{ 'Gepubliceerd op'|trans }} </span>
+                                        <span>{{ item.created }}</span>
                                     </p>
                                     {% set banner = item.banner|split('.') %}
                                     {% set banner = banner[0] %}

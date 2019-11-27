@@ -1,5 +1,5 @@
 <div class="container-fluid styling-footer styling-footer-{{ page.page.id }} p-0">
-    <div class="styling-footerr-bg-{{ page.page.id }}"></div>
+    <div class="styling-footer-bg-{{ page.page.id }}"></div>
     <div class="container pt-5 pb-3">
         <div class="row justify-content-md-between">
             <div class="col-12 col-md-4 mb-4">
@@ -11,14 +11,16 @@
                 {{ page.menusInfo.footerLeft.description|raw }}
                 {% if site.email is not empty %}
                     <p class="text-nowrap">
-                        <a href="mailto:{{ site.email }}">
+                        <a href="mailto:{{ site.email }}"
+                           title="{{ 'Email'|trans }}" >
                             <span class="fa fa-envelope-open" aria-hidden="true"> </span> {{ site.email }}
                         </a>
                     </p>
                 {% endif %}
                 {% if site.phone is not empty %}
                     <p class="text-nowrap">
-                        <a href="tel:{{ site.phone }}">
+                        <a href="tel:{{ site.phone }}"
+                           title="{{ 'Telefoon'|trans }}" >
                             <span class="fa fa-phone" aria-hidden="true"> </span> {{ site.phone }}
                         </a> <br>
                     </p>
@@ -27,7 +29,11 @@
                     {% for menu in page.menus.footerLeft %}
                         {% if menu.children is empty %}
                             <li class="mb-2">
-                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                                <a href="{{ menu.slug }}"
+                                   rel="{{ menu.rel }}"
+                                   target="{{ menu.target }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
                             </li>
                         {% else %}
                             <li class="mb-2">
@@ -35,8 +41,12 @@
                             </li>
                             {% for m in menu.children %}
                                 <li class="mb-1">
-                                    <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}">
-                                        <i class="fa fa-level-up-alt fa-rotate-90"></i>
+                                    <a href="{{ m.slug }}"
+                                       rel="{{ m.rel }}"
+                                       target="{{ m.target }}"
+                                       title="{{ menu.title }}"
+                                    >
+                                        <i class="fa fa-level-up-alt fa-rotate-90"> </i>
                                         {{ m.title }}
                                     </a>
                                 </li>
@@ -51,28 +61,44 @@
 
                 {% if site.facebook is not empty %}
                     <p>
-                        <a href="{{ site.facebook }}" target="_blank">
+                        <a href="{{ site.facebook }}"
+                           target="_blank"
+                           rel="nofollow"
+                           title="Facebook"
+                        >
                             <span class="fab fa-facebook" aria-hidden="true"> </span> Facebook
                         </a>
                     </p>
                 {% endif %}
                 {% if site.twitter is not empty %}
                     <p>
-                        <a href="{{ site.twitter }}" target="_blank">
+                        <a href="{{ site.twitter }}"
+                           target="_blank"
+                           rel="nofollow"
+                           title="Twitter"
+                        >
                             <span class="fab fa-twitter" aria-hidden="true"> </span> Twitter
                         </a>
                     </p>
                 {% endif %}
                 {% if site.linkedin is not empty %}
                     <p>
-                        <a href="{{ site.linkedin }}" target="_blank">
-                            <span class="fab fa-linkedin" aria-hidden="true"> </span> Linkedin
+                        <a href="{{ site.linkedin }}"
+                           target="_blank"
+                           rel="nofollow"
+                           title="LinkedIn"
+                        >
+                            <span class="fab fa-linkedin" aria-hidden="true"> </span> LinkedIn
                         </a>
                     </p>
                 {% endif %}
                 {% if site.instagram is not empty %}
                     <p>
-                        <a href="{{ site.linkedin }}" target="_blank">
+                        <a href="{{ site.linkedin }}"
+                           target="_blank"
+                           rel="nofollow"
+                           title="instagram"
+                        >
                             <span class="fab fa-instagram" aria-hidden="true"> </span> Instagram
                         </a>
                     </p>
@@ -81,18 +107,30 @@
                     {% for menu in page.menus.footerMiddle %}
                         {% if menu.children is empty %}
                             <li class="mb-2">
-                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">
+                                <a href="{{ menu.slug }}"
+                                   rel="{{ menu.rel }}"
+                                   target="{{ menu.target }}"
+                                   title="{{ menu.title }}"
+                                >
                                     {{ menu.title }}
                                 </a>
                             </li>
                         {% else %}
                             <li class="mb-2">
-                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                                <a href="{{ menu.slug }}"
+                                   rel="{{ menu.rel }}"
+                                   target="{{ menu.target }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
                             </li>
                             {% for m in menu.children %}
                                 <li class="mb-1">
-                                    <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}">
-                                        <i class="ml-1 fa fa-level-up-alt fa-rotate-90"></i> {{ m.title }}
+                                    <a href="{{ m.slug }}"
+                                       rel="{{ m.rel }}"
+                                       target="{{ m.target }}"
+                                       title="{{ m.title }}"
+                                    >
+                                        <i class="ml-1 fa fa-level-up-alt fa-rotate-90"> </i> {{ m.title }}
                                     </a>
                                 </li>
                             {% endfor %}
@@ -107,16 +145,28 @@
                     {% for menu in page.menus.footerRight %}
                         {% if menu.children is empty %}
                             <li class="mb-2">
-                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                                <a href="{{ menu.slug }}"
+                                   rel="{{ menu.rel }}"
+                                   target="{{ menu.target }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
                             </li>
                         {% else %}
                             <li class="mb-2">
-                                <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}">{{ menu.title }}</a>
+                                <a href="{{ menu.slug }}"
+                                   rel="{{ menu.rel }}"
+                                   target="{{ menu.target }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
                             </li>
                             {% for m in menu.children %}
                                 <li class="mb-1">
-                                    <a href="{{ m.slug }}" rel="{{ m.rel }}" target="{{ m.target }}">
-                                        <i class="ml-1 fa fa-level-up-alt fa-rotate-90"></i>
+                                    <a href="{{ m.slug }}"
+                                       rel="{{ m.rel }}"
+                                       target="{{ m.target }}"
+                                       title="{{ m.title }}"
+                                    >
+                                        <i class="ml-1 fa fa-level-up-alt fa-rotate-90"> </i>
                                         {{ m.title }}
                                     </a>
                                 </li>
@@ -136,19 +186,34 @@
                 <div class="col-12 col-md-3 text-muted pb-2 pb-sm-0 text-center text-sm-left">
                     &copy; {{ site.title }} {{ "now"|date("Y") }}
                     {% for menu in page.menus.bottomLeft %} |
-                        <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                        <a href="{{ menu.slug }}"
+                           rel="{{ menu.rel }}"
+                           target="{{ menu.target }}"
+                           class="text-muted"
+                           title="{{ menu.title }}"
+                        >{{ menu.title }}</a>
                         {% if loop.last %}{% else %} | {% endif %}
                     {% endfor %}
                 </div>
                 <div class="col-12 col-md-3 text-muted pb-2 pb-sm-0 text-center">
                     {% for menu in page.menus.bottomMiddle %}
-                        <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                        <a href="{{ menu.slug }}"
+                           rel="{{ menu.rel }}"
+                           target="{{ menu.target }}"
+                           class="text-muted"
+                           title="{{ menu.title }}"
+                        >{{ menu.title }}</a>
                         {% if loop.last %}{% else %} | {% endif %}
                     {% endfor %}
                 </div>
                 <div class="col-12 col-md-6 text-muted pb-2 pb-sm-0 text-center text-sm-right">
                     {% for menu in page.menus.bottomRight %}
-                        <a href="{{ menu.slug }}" rel="{{ menu.rel }}" target="{{ menu.target }}" class="text-muted">{{ menu.title }}</a>
+                        <a href="{{ menu.slug }}"
+                           rel="{{ menu.rel }}"
+                           target="{{ menu.target }}"
+                           class="text-muted"
+                           title="{{ menu.title }}"
+                        >{{ menu.title }}</a>
                         {% if loop.last %}{% else %} | {% endif %}
                     {% endfor %}
                 </div>
