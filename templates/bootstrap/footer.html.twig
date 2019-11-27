@@ -7,7 +7,8 @@
                 {{ site.description|raw }}
             </div>
             <div class="col-12 col-md-2 mb-4">
-                <h3 class="h5 mb-3">{{ page.menuNames.footerLeft }}</h3>
+                <h3 class="h5 mb-3">{{ page.menusInfo.footerLeft.title }}</h3>
+                {{ page.menusInfo.footerLeft.description|raw }}
                 {% if site.email is not empty %}
                     <p class="text-nowrap">
                         <a href="mailto:{{ site.email }}">
@@ -45,7 +46,8 @@
                 </ul>
             </div>
             <div class="col-12 col-md-2 mb-4">
-                <h3 class="h5 mb-3">{{ page.menuNames.footerMiddle }}</h3>
+                <h3 class="h5 mb-3">{{ page.menusInfo.footerMiddle.title }}</h3>
+                {{ page.menusInfo.footerMiddle.description|raw }}
 
                 {% if site.facebook is not empty %}
                     <p>
@@ -99,7 +101,8 @@
                 </ul>
             </div>
             <div class="col-12 col-md-2 mb-4">
-                <h3 class="h5 mb-3">{{ page.menuNames.footerRight }}</h3>
+                <h3 class="h5 mb-3">{{ page.menusInfo.footerRight.title }}</h3>
+                {{ page.menusInfo.footerRight.description|raw }}
                 <ul class="nav flex-column">
                     {% for menu in page.menus.footerRight %}
                         {% if menu.children is empty %}
