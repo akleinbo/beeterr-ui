@@ -34,7 +34,7 @@
                                             <img class="card-img-top" src="{{ item.images|first }}" alt="{{ item.title }}">
                                         {% endif %}
                                         <div class="card-body">
-                                            <h5 class="card-title text-nowrap">{{ item.title }}</h5>
+                                            <h5 class="card-title">{{ item.title }}</h5>
                                             {% set banner = item.banner|split('.') %}
                                             {% set banner = banner[0] %}
                                             {% set banner = banner|striptags %}

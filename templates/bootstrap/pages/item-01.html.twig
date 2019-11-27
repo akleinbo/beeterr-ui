@@ -47,10 +47,15 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <p class="small mb-3 styling-date-published">
-                                <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
-                                <span class="text-uppercase">{{ page.page.created }}</span>
-                            </p>
+                            <div class="row">
+                                <div class="col small mb-3 styling-date-published">
+                                    <span class="text-secondary">{{ 'Gepubliceerd op'|trans }} </span>
+                                    <span class="text-uppercase badge badge-success">{{ page.page.created }}</span>
+                                </div>
+                                <div class="col text-right">
+                                    {% include 'bootstrap/share-icons.html.twig' %}
+                                </div>
+                            </div>
                             {% if page.page.images|first is not empty %}
                                 <img class="img-thumbnail img-fluid"
                                      src="{{ page.page.images|first }}"

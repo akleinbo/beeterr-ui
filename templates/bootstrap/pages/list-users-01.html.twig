@@ -1,0 +1,121 @@
+{% extends '/bootstrap/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include '/bootstrap/'~site.template~'.html.twig' %}
+
+    <!-- list-02 -->
+    <div class="container-fluid styling-container p-0">
+        <div class="container content styling-breadcrumbs pt-3">
+            {% include '/bootstrap/breadcrumbs.html.twig' %}
+        </div>
+        <div class="container content styling-content py-3">
+            <main id="content">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="list-group">
+                            {% for menu in page.menus.bodyLeft|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="list-group">
+                            {% for menu in page.page.children|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-9 pb-3">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="bg-light text-dark p-3 mb-3 rounded styling-banner">
+                                    <h1>{{ page.page.title }}</h1>
+                                    <hr class="border-dark ml-0 mb-3 text-left">
+                                    {{ page.page.banner|raw }}
+                                </div>
+                                {{ page.page.description|raw }}
+                            </div>
+                            {% for item in page.users %}
+
+                                <div class="col-sm-6 col-xl-4">
+                                    <div class="card card-hover my-3">
+                                        {% if item.images|first is empty %}
+                                            <div class="text-center p-3">
+                                            <span class="icon icon-lg icon-success">
+                                                <i class="icon-inner fas fa-user"> </i>
+                                            </span>
+                                            </div>
+                                        {% else %}
+                                            <img class="card-img-top h-100" src="{{ item.images|first }}" alt="{{ item.title }}">
+                                        {% endif %}
+                                        <div class="card-body text-center">
+                                            <h4 class="card-title h5">{{ item.fullname }}</h4>
+                                            <p class="text-secondary">{{ item.title }}</p>
+                                            <ul class="list-inline mb-0">
+                                                {% if item.instagram %}
+                                                    <li class="list-inline-item">
+                                                        <a class="icon icon-sm"
+                                                           target="_blank"
+                                                           href="{{ item.instagram }}">
+                                                            <i class="icon-inner fab fa-instagram"> </i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if item.twitter %}
+                                                    <li class="list-inline-item">
+                                                        <a class="icon icon-sm"
+                                                           target="_blank"
+                                                           href="{{ item.twitter }}">
+                                                            <i class="icon-inner fab fa-twitter"> </i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if item.linkedin %}
+                                                    <li class="list-inline-item">
+                                                        <a class="icon icon-sm"
+                                                           target="_blank"
+                                                           href="{{ item.linkedin }}">
+                                                            <i class="icon-inner fab fa-linkedin-in"> </i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                                {% if item.facebook %}
+                                                    <li class="list-inline-item">
+                                                        <a class="icon icon-sm icon-dark"
+                                                           target="_blank"
+                                                           href="{{ item.facebook }}">
+                                                            <i class="icon-inner fab fa-facebook"> </i>
+                                                        </a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- footer -->
+    {% include '/bootstrap/footer.html.twig' %}
+
+{% endblock %}

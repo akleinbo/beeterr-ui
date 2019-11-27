@@ -8,6 +8,20 @@
             </div>
             <div class="col-12 col-md-2 mb-4">
                 <h3 class="h5 mb-3">{{ page.menuNames.footerLeft }}</h3>
+                {% if site.email is not empty %}
+                    <p class="text-nowrap">
+                        <a href="mailto:{{ site.email }}">
+                            <span class="fa fa-envelope-open" aria-hidden="true"> </span> {{ site.email }}
+                        </a>
+                    </p>
+                {% endif %}
+                {% if site.phone is not empty %}
+                    <p class="text-nowrap">
+                        <a href="tel:{{ site.phone }}">
+                            <span class="fa fa-phone" aria-hidden="true"> </span> {{ site.phone }}
+                        </a> <br>
+                    </p>
+                {% endif %}
                 <ul class="nav flex-column">
                     {% for menu in page.menus.footerLeft %}
                         {% if menu.children is empty %}
@@ -29,20 +43,6 @@
                         {% endif %}
                     {% endfor %}
                 </ul>
-                {% if site.email is not empty %}
-                    <p class="text-nowrap">
-                        <a href="mailto:{{ site.email }}">
-                            <span class="fa fa-envelope-open" aria-hidden="true"> </span> {{ site.email }}
-                        </a>
-                    </p>
-                {% endif %}
-                {% if site.phone is not empty %}
-                    <p class="text-nowrap">
-                        <a href="tel:{{ site.phone }}">
-                            <span class="fa fa-phone" aria-hidden="true"> </span> {{ site.phone }}
-                        </a> <br>
-                    </p>
-                {% endif %}
             </div>
             <div class="col-12 col-md-2 mb-4">
                 <h3 class="h5 mb-3">{{ page.menuNames.footerMiddle }}</h3>
