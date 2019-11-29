@@ -62,7 +62,7 @@ class DefaultController extends AbstractController
      * @param            $_locale
      * @param string     $slug
      * @return Response
-     * @Route("/example/{_locale}/{siteId}/{slug}",
+     * @Route("/example/{siteId}/{_locale}/{slug}",
      *     name="example",
      *     defaults={"_locale"="nl"},
      *     requirements={"slug"="[^+]+", "_locale"="nl|en"}
@@ -81,6 +81,7 @@ class DefaultController extends AbstractController
         } elseif(empty($page['route'])) {
             return new Response('Sorry, no page found[3]', Response::HTTP_NOT_FOUND);
         } else {
+
             return $this->render('/bootstrap/' . $page['route'] . '/' . $page['type'] . '.html.twig', [
                 'site' => $site,
                 'page' => $page
@@ -90,7 +91,6 @@ class DefaultController extends AbstractController
 
     /**
      * @param ApiManager          $apiManager
-     * @param TranslatorInterface $translator
      * @param Request             $request
      * @param                     $_locale
      * @param string              $slug
@@ -103,7 +103,6 @@ class DefaultController extends AbstractController
      */
     public function index(
         ApiManager $apiManager,
-        TranslatorInterface $translator,
         Request $request,
         $_locale,
         $slug = 'home'
