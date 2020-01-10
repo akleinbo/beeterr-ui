@@ -58,6 +58,7 @@ class DefaultController extends AbstractController
 
     /**
      * @param ApiManager $apiManager
+     * @param Request    $request
      * @param            $siteId
      * @param            $_locale
      * @param string     $slug
@@ -70,12 +71,15 @@ class DefaultController extends AbstractController
      */
     public function example(
         ApiManager $apiManager,
+        Request $request,
         $siteId,
         $_locale,
         $slug = 'home'
     ) {
         if (!$site = $apiManager->getSite($this->getParameter('api_end_point_example') . $siteId)) {
             return new Response('Sorry, no site found[1]', Response::HTTP_BAD_REQUEST);
+        } elseif(!$_locale = $apiManager->getLocale($site, $request, $_locale)) {
+            return new Response('Sorry, could not determine locale[1]', Response::HTTP_BAD_REQUEST);
         } elseif(!$page = $apiManager->getPage($apiManager, $site, $_locale, $slug)) {
             return new Response('Sorry, no page found[2]', Response::HTTP_BAD_REQUEST);
         } elseif(empty($page['route'])) {
@@ -97,18 +101,19 @@ class DefaultController extends AbstractController
      * @return Response
      * @Route("/{_locale}/{slug}",
      *     name="default",
-     *     defaults={"_locale"="nl"},
-     *     requirements={"slug"="[^+]+", "_locale"="nl|en"}
+     *     requirements={"slug"="[^+]+", "_locale"="nl|en|be|de"}
      * )
      */
     public function index(
         ApiManager $apiManager,
         Request $request,
-        $_locale,
+        $_locale = null,
         $slug = 'home'
     ) {
         if(!$site = $apiManager->getSite($this->getParameter('api_end_point'))) {
             return new Response('Sorry, no site found[1]', Response::HTTP_BAD_REQUEST);
+        } elseif(!$_locale = $apiManager->getLocale($site, $request, $_locale)) {
+            return new Response('Sorry, could not determine locale[1]', Response::HTTP_BAD_REQUEST);
         } elseif(!$page = $apiManager->getPage($apiManager, $site, $_locale, $slug)) {
             return new Response('Sorry, no page found[1]', Response::HTTP_BAD_REQUEST);
         } elseif(empty($page['route'])) {

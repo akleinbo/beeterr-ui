@@ -8,6 +8,8 @@
 
 namespace App\Service;
 
+use Symfony\Component\HttpFoundation\Request;
+
 class ApiManager
 {
 
@@ -37,6 +39,30 @@ class ApiManager
     public function getSite($url)
     {
         return $this->curlRequest($url);
+    }
+
+    /**
+     * @param         $site
+     * @param Request $request
+     * @param null    $_locale
+     * @return bool|null
+     */
+    public function getLocale($site, Request $request, $_locale = null)
+    {
+        if (empty($site)) {
+            return false;
+        } elseif (empty($site['locale'])) {
+            return false;
+        } elseif (empty($_locale)) {
+            $l =  $site['locale'];
+        } else {
+            $l = $_locale;
+        }
+
+        $request->setLocale($l);
+        $request->setDefaultLocale($l);
+
+        return $l;
     }
 
     /**

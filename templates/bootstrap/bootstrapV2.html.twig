@@ -76,7 +76,7 @@
 <div class="container-fluid styling-navbar-container p-0">
     <div class="container styling-navbar bg-white">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="/" title="{{ 'Home'|trans }}">
+            <a class="navbar-brand" href="/" title="{{ 'Home'|trans([], null, locale = app.request.locale) }}">
                 <span class="fa fa-home"> </span>
             </a>
             <button class="navbar-toggler"
@@ -134,15 +134,15 @@
                         {% endif %}
                     {% endfor %}
                 </ul>
-                <form class="styling-navbar-search form-inline my-2 my-lg-0" action="{{ path('default', {'slug':'search'}) }}">
+                <form class="styling-navbar-search form-inline my-2 my-lg-0" action="{{ path('default', {'slug':'search', '_locale':app.request.locale}) }}">
                     <input class="form-control mr-sm-2"
                            type="search"
-                           placeholder="{{ 'Search'|trans }}"
+                           placeholder="{{ 'Search'|trans([], null, locale = app.request.locale) }}"
                            aria-label="Search"
                            name="needle"
                            value="{{ app.request.get('needle') }}"
                     >
-                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{{ 'Search'|trans }}</button>
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">{{ 'Search'|trans([], null, locale = app.request.locale) }}</button>
                 </form>
             </div>
         </nav>
