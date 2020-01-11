@@ -65,7 +65,6 @@ class DefaultController extends AbstractController
      * @return Response
      * @Route("/example/{siteId}/{_locale}/{slug}",
      *     name="example",
-     *     defaults={"_locale"="nl"},
      *     requirements={"slug"="[^+]+", "_locale"="nl|en"}
      * )
      */
