@@ -1,5 +1,6 @@
 <div class="p-0 p-md-5 py-3 styling-banner-jumbotron" style="background-image: url('{{ banner.images|first }}?id={{ random() }}'); background-position: center center;background-size: cover;">
     <h1>{{ banner.title }}</h1>
+    <hr class="styling-banner-jumbotron-hr">
     {{ banner.description|raw }}
     {% for cta in banner.CTAS|slice(0,1) if cta is defined %}
         <a class="btn btn-pill btn-light btn-lg"

@@ -1,0 +1,67 @@
+{% extends '/bootstrap/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include '/bootstrap/'~site.template~'.html.twig' %}
+
+    <!-- search-01 -->
+    <div class="container-fluid styling-container p-0">
+        <div class="container content styling-breadcrumbs pt-3">
+            {% include '/bootstrap/breadcrumbs.html.twig' %}
+        </div>
+        <div class="container content styling-content py-3">
+            <main id="content">
+                <div class="row">
+                    <div class="col-12 col-md-3">
+                        <div class="list-group">
+                            {% for menu in page.menus.bodyLeft|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
+                        </div>
+                        <div class="list-group">
+                            {% for menu in page.page.parent.children|default %}
+                                <a class="list-group-item list-group-item-action{% if app.request.pathInfo == menu.slug %} active{% endif %} {% if loop.last %} mb-3{% endif %}"
+                                   href="{{ menu.slug }}"
+                                   target="{{ menu.target }}"
+                                   rel="{{ menu.rel }}"
+                                   title="{{ menu.title }}"
+                                >{{ menu.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-9">
+                        <div class="rounded h-75"
+                             style="background-size: cover; background-position: center center; background-image: url('{{ page.page.images|first }}'); border: 4px solid white;" >
+                        </div>
+                        <div style="position: relative;top: -110px;">
+                            {% set user = page.users|first %}
+
+                            <img class="img-thumbnail rounded-circle m-4"
+                                 src="{{ user.images|first }}"
+                                 alt="{{ user.fullname }}"
+                                 style="max-height: 200px;"
+                            />
+                            <span>{{ user.fullname }}</span>
+                        </div>
+                        <h1>hiero</h1>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- footer -->
+    {% include '/bootstrap/footer.html.twig' %}
+
+{% endblock %}
