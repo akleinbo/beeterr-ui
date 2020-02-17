@@ -1,0 +1,116 @@
+{% extends '/bootstrap/base.html.twig' %}
+
+{% block title %}{{ page.page.metaTitle|default }}{% endblock %}
+{% block metaDescription %}{{ page.page.metaDescription|default }}{% endblock %}
+{% block metaKeywords %}{{ page.page.metaKeywords|default }}{% endblock %}
+{% block metaAuthor %}{{ page.page.metaAuthor|default }}{% endblock %}
+
+{% block body %}
+
+    <!-- header -->
+    {% include '/bootstrap/'~site.template~'.html.twig' %}
+
+    <style>
+
+        /* rating-list */
+        .rating-stars {
+            margin-right: 10px;
+            display: inline-block;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            line-height: 1;
+            white-space: nowrap;
+            clear: both; }
+        .rating-stars i {
+            font-size: 14px;
+            color: #ccc;
+            display: inline; }
+        .rating-stars li {
+            display: block;
+            text-overflow: clip;
+            white-space: nowrap;
+            z-index: 1; }
+        .rating-stars li.stars-active {
+            z-index: 2;
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden; }
+        .rating-stars li.stars-active i {
+            color: orange; }
+
+    </style>
+
+    <!-- list-01 -->
+    <div class="container-fluid styling-container p-0">
+        <div class="container content styling-breadcrumbs pt-3">
+            {% include '/bootstrap/breadcrumbs.html.twig' %}
+        </div>
+        <div class="container content styling-content py-3">
+            <main id="content">
+                <div class="row">
+                    <div class="col-12 pb-3">
+                        <h1>{{ page.page.title }}</h1>
+                        <span class="rating-wrap mb-3">
+                            <ul class="rating-stars">
+                                <li style="width:30%" class="stars-active">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                                <li>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </li>
+                            </ul> |
+                        </span>
+                        <span class="label-rating text-muted">0 {{ 'Beoordelingen'|trans }} | </span>
+                        <span class="label-rating text-muted">0 {{ 'Bestellingen'|trans }} </span>
+                    </div>
+                    <div class="col-12 col-md-5 pb-3">
+                        <p>
+                            <a href="{{ page.page.images|first|default }}"
+                               data-fancybox="{{ page.page.title }}"
+                               id="imageUrl"
+                               target="_blank">
+                                <img class="img-fluid img-thumbnail"
+                                     id="imageSrc"
+                                     src="{{ page.page.images|first }}"
+                                     alt="{{ page.page.title }}">
+                            </a>
+                        </p>
+                        <p>
+                            {% for image in page.page.images %}
+                                <img src="{{ image }}"
+                                     alt="{{ page.page.title }}"
+                                     style="cursor: pointer; max-height: 75px;"
+                                     class="img-fluid img-thumbnail"
+                                     onmouseover="replaceImage(this);" />
+                            {% endfor %}
+                        </p>
+                        <script>
+                            function replaceImage(t) {
+                                document.getElementById('imageUrl').setAttribute('href', t.src);
+                                document.getElementById('imageSrc').setAttribute('src', t.src);
+                            }
+                        </script>
+                    </div>
+                    <div class="col-12 col-md-7">
+
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- footer -->
+    {% include '/bootstrap/footer.html.twig' %}
+
+{% endblock %}
