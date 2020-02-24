@@ -41,7 +41,10 @@
             <div class="col">
                 {% if site.logo is not empty %}
                     <a href="/">
-                        <img src="{{ site.logo }}" alt="{{ site.title }}">
+                        <img src="{{ site.logo }}" alt="{{ site.title }}"
+                             class="img-fluid"
+                             style="max-height: 75px;"
+                        >
                     </a>
                 {% else %}
                     <a href="/" title="{{ site.title }}">
